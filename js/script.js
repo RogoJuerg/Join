@@ -1,7 +1,6 @@
 async function init() {
     await includeHTML();
-    currentPage();
-    initBoard();
+    await initBoard();
 }
 
 async function includeHTML() {
@@ -18,28 +17,14 @@ async function includeHTML() {
     }
 }
 
-function currentPage() {
-    let activePage = window.location.pathname;
-    console.log(activePage)
-    
-    if (activePage.includes('board')) {
-        document.getElementById('boardId').classList.add('nav-active');
-    }
-    if (activePage.includes('backlog')) {
-        document.getElementById('backlogId').classList.add('nav-active');
-    }
-    if (activePage.includes('add-task')) {
-        document.getElementById('addTaskId').classList.add('nav-active');
-    }
-    if (activePage.includes('help')) {
-        document.getElementById('helpId').classList.add('nav-active');
-    }
-}
 
-function moveTo(website) {
+
+async function goTo(website) {
     let content = document.getElementById("allContents")
     content.setAttribute("include-html", website + ".html");
-    init();
-    
+    await includeHTML();
 
-}
+    if (website == 'board') {
+        initBoard();
+    }
+    }

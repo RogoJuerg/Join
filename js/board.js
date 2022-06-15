@@ -34,7 +34,9 @@ let allTasks = [
  * 
  */
 async function initBoard() {
-    await showTickets();
+        await showTickets(); 
+    
+    
 }
 
 

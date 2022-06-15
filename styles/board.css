@@ -6,6 +6,16 @@ main {
     display: flex;
     width: 100%;
     font-weight: bold;
+    animation: openAnim 125ms ease-in-out;
+}
+
+@keyframes openAnim {
+    0% {
+        transform: scale(0%);
+    }
+    100% {
+        transform: scale(100%);
+    }
 }
 
 h2 {
