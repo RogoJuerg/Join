@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/board.js"></script>
+    <script src="./js/script.js"></script>
+    
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/backlog.css">
+    
+
+    <title>JOIN</title>
+</head>
+
+<body onload="init()">
+    <div>
+        <nav id="menubar">
+            <div class="img-join"><img src="src/img/joinlogo.png"></div>
+            <div id="menu-links">
+                <a href="#" id="boardId" class="nav-link nav-active" onclick="moveTo('board')">Board</a>
+                <a href="#"  id="backlogId" class="nav-link" onclick="moveTo('backlog')">Backlog</a>
+                <a href="#" id="addTaskId" class="nav-link" onclick="moveTo('add-task')">Add task</a>
+                <a href="#" id="helpId" class="nav-link" onclick="moveTo('help')">Help</a>           
+            </div>
+            <div class="user"><img width="70px" src="src/img/user.svg"></div>
+        </nav>
+    </div>
+
+    <div id="allContents" class="main-container" include-html="board.html"></div>>
+
+
+    </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,331 @@
+body {
+    display: flex;
+}
+
+main {
+    display: flex;
+    width: 100%;
+    font-weight: bold;
+    animation: openAnim 125ms ease-in-out;
+}
+
+.green-border {
+    border: 2px solid lightgreen!important;
+    border-radius: 3px;
+}
+
+.red-border {
+    border: 2px solid red!important;
+    border-radius: 3px;
+}
+
+@keyframes openAnim {
+    0% {
+        transform: scale(0%);
+    }
+    100% {
+        transform: scale(100%);
+    }
+}
+
+.content-container {
+    margin: 32px 16px 32px 16px;
+    width: 100%;
+}
+
+.content-container-title {
+    margin-bottom: 16px;
+}
+
+.content-container-title h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.content-container-title span {
+    color: #1E3190;
+    font-size: 0.9em;
+}
+
+.task-container {
+    display: flex;
+    background-color: #F4F3FB;
+    width: 100%;
+    height: fit-content;
+    border-radius: 10px;
+}
+
+.task-container-content {
+    margin: 16px;
+    width: 100%;
+    align-items: center;
+}
+
+.form-left {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    margin: 16px;
+    justify-content: center;
+}
+
+.task-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.title-label {
+    color: #1E3190;
+    font-size: 1em;
+    margin: 6px 0 6px 0;
+}
+
+.task-title input {
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    font-size: 1.2em;
+    height: 50px;
+    padding: 0 8px 0 8px;
+}
+
+.form-category {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 6px 0 6px 0;
+}
+
+.form-category select {
+    width: 100%;
+    font-size: 1.2em;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    padding: 0 8px 0 8px;
+    height: 50px;
+    background: url(/src/img/chevron.png) no-repeat right white;
+    transition: all 125ms ease-in-out;
+    -webkit-appearance: none;
+    background-size: 16px;
+    background-position-x: 96%;
+}
+
+.form-category select:hover {
+    transition: all 125ms ease-in-out;
+    background: url(/src/img/chevron-blue.png) no-repeat right white;
+    -webkit-appearance: none;
+    background-size: 16px;
+    background-position-x: 96%;
+    background-position-y: 58%;
+}
+
+.form-description {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.form-description textarea {
+    resize: none;
+    font-size: 1.2em;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    padding: 8px;
+}
+
+.task-container-content form {
+    display: flex;
+}
+
+.form-right {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    margin: 16px;
+    justify-content: center;
+}
+
+.form-due-date {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-due-date input {
+    font-size: 1.2em;
+    font-family: 'PT Sans', sans-serif;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    padding: 0 8px 0 8px;
+    height: 50px;
+}
+
+.form-due-date input::-webkit-calendar-picker-indicator {
+    background: url(/src/img/icons8-calendar-150.png) no-repeat right white;
+    background-size: 26px;
+    height: 50px;
+    width: 50px;
+    transform: translateX(-10px);
+    transition: all 125ms ease-in-out;
+}
+.form-due-date input:hover::-webkit-calendar-picker-indicator{
+    background: url(/src/img/icons8-calendar-150-blue.png) no-repeat right white;
+    background-size: 26px;
+    height: 50px;
+    width: 50px;
+    transform: translateX(-12px);
+    transition: all 125ms ease-in-out;
+}
+
+.form-urgency {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 6px 0 6px 0;
+}
+
+.form-urgency select {
+    width: 100%;
+    font-size: 1.2em;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    padding: 0 8px 0 8px;
+    height: 50px;
+    background: url(/src/img/chevron.png) no-repeat right white;
+    -webkit-appearance: none;
+    background-size: 16px;
+    background-position-x: 96%;
+    transition: all 125ms ease-in-out;
+}
+
+.form-urgency select:hover {
+    transition: all 125ms ease-in-out;
+    background: url(/src/img/chevron-blue.png) no-repeat right white;
+    -webkit-appearance: none;
+    background-size: 16px;
+    background-position-x: 96%;
+    background-position-y: 58%;
+    transition: all 125ms ease-in-out;
+}
+
+.form-assigned-to {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 6px 0 6px 0;
+}
+
+.content-assigned-to {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 6px 0 6px 0;
+}
+
+.assigned-to-user-img {
+    display: flex;
+    align-items: center;
+}
+
+@keyframes imgPulse {
+    20% {
+        border: 1px solid blue;
+    }
+    40% {
+        border: 1px solid white;
+    }
+    60% {
+        border: 1px solid blue;
+    }
+    100% {
+        border: 1px solid white;
+    }
+}
+
+.assigned-to-user-img-user {
+    width: 64px;
+    border-radius: 100%;
+    border: 1px solid white;
+    animation: imgPulse 10s ease-in-out infinite;
+    margin: 8px;
+}
+
+.assigned-to-user-img-add-user {
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    margin: 8px;
+}
+
+.assigned-to-buttons {
+    display: flex;
+    justify-content: end;
+}
+
+.btn-1 {
+    width: 150px;
+    border: 2px solid transparent;
+    background-color: transparent;
+    border-radius: 10px;
+    font-size: 1em;
+    text-align: center;
+    font-weight: bold;
+    padding: 16px;
+    color: #1E3190;
+    margin: 0 24px 0 24px;
+    transition: all 125ms ease-in-out;
+}
+.btn-1:hover {
+    transition: all 125ms ease-in-out;
+    color: white;
+    background-color: red;
+    border: 2px solid lightgray;
+}
+
+.btn-1:active {
+    transition: all 125ms ease-in-out;
+    color: #1E3190;
+    background-color: white;
+    border: 2px solid #1E3190;
+}
+
+.btn-1:hover ~ .btn-2 {
+    transition: all 175ms ease-in-out;
+    color: transparent;
+    background-color: transparent;
+    border: 2px solid transparent;
+    transform: scale(0%);
+}
+
+.btn-2 {
+    width: 150px;
+    border: 2px solid transparent;
+    background-color: #1E3190;
+    border-radius: 10px;
+    font-size: 1em;
+    text-align: center;
+    font-weight: bold;
+    padding: 16px;
+    color: white;
+    margin: 0 0 0 24px;
+    transition: all 125ms ease-in-out;
+}
+
+.btn-2:hover {
+    background-color: white;
+    border: 2px solid #1E3190;
+    color: #1E3190;
+    transition: all 125ms ease-in-out;
+}
+
+.btn-2:active {
+    background-color: #6b718c;
+    border: 2px solid #1E3190;
+    color: #1E3190;
+    transition: all 125ms ease-in-out;
+}
+
+
+
+
+

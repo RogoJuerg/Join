@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./styles/add-task.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./js/add-task.js"></script>
+    <script src="./js/script.js"></script>
+    <title>Join - Add Task</title>
+</head>
+
+<body>
+
+    
+
+    <main>
+        <div class="content-container">
+            <div class="content-container-title">
+                <h1>Add Task</h1>
+                <span>Learning Management System Project</span>
+            </div>
+            <div class="task-container">
+                <div class="task-container-content">
+                    <form>
+                        <div class="form-left">
+                            <div class="task-title">
+                                <label class="title-label">TITLE</label>
+                                <input onkeyup="checkForm()" type="text" id="title" required>
+                            </div>
+                            <div class="form-category">
+                                <label class="title-label">CATEGORY</label>
+                                <select name="Tasks" id="tasks" required>
+                                    <option value="">--Select task--</option>
+                                    <option value="management">Management</option>
+                                    <option value="programming">Programming</option>
+                                </select>
+                            </div>
+                            <div class="form-description">
+                                <label class="title-label">DESCRIPTION</label>
+                                <textarea type="text" id="description" rows="6" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-right">
+                            <div class="form-due-date">
+                                <label class="title-label">DUE DATE</label>
+                                <input type="date" id="date" required>
+                            </div>
+                            <div class="form-urgency">
+                                <label class="title-label">URGENCY</label>
+                                <select name="Tasks" id="urgency" required>
+                                    <option value="low">Low</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                            </div>
+                            <div class="form-assigned-to">
+                                <label class="title-label">ASSIGNED TO</label>
+                                <div class="content-assigned-to">
+                                    <div class="assigned-to-user-img">
+                                        <img class="assigned-to-user-img-user" src="./src/img/profile.png">
+                                        <img class="assigned-to-user-img-add-user" src="./src/img/icon plus.png">
+                                    </div>
+                                    <div class="assigned-to-buttons">
+                                        <button type="button" class="btn-1">CANCEL</button>
+                                        <button type="button" onclick="checkForm()" class="btn-2">CREATE TASK</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

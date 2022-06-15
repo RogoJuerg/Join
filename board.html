@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./styles/board.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="/js/script.js"></script>
+    <script src="js/board.js"></script>
+   
+    <title>Join - Board</title>
+</head>
+
+<body>
+ 
+    <main>
+          <div class="content-container">
+            <div class="content-container-title">
+                <h1>Board</h1>
+                <span>Learning Management System Project</span>
+            </div>
+            <div id="mainContentDiv" class="colum-main-content">
+                <div id="toDo">
+                    <h2>TO DO</h2>
+                    <div id="todoContent" class="board-main-content" ondrop="moveTo('todo')" ondragover="allowDrop(event)">
+
+                    </div>
+                </div>
+                <div id="inProgressDiv" class="colum-main-content">
+                    <h2>IN PROGRESS</h2>
+                    <div id="inprogressContent" class="board-main-content" ondrop="moveTo('inprogress')" ondragover="allowDrop(event)">
+                        
+                    </div>
+                </div>
+                <div id="testingDiv" class="colum-main-content">
+                    <h2>TESTING</h2>
+                    <div id="testingContent" class="board-main-content" ondrop="moveTo('testing')" ondragover="allowDrop(event)">
+                        
+                    </div>
+                </div>
+                <div id="doneDiv" class="colum-main-content">
+                    <h2>DONE</h2>
+                    <div id="doneContent" class="board-main-content" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

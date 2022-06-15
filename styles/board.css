@@ -1,0 +1,71 @@
+body {
+    display: flex;
+}
+
+main {
+    display: flex;
+    width: 100%;
+    font-weight: bold;
+}
+
+h2 {
+    text-align: center;
+}
+
+main {
+    height: 100vh;
+}
+
+.content-container {
+    margin: 32px 16px 32px 16px;
+    width: 100%;
+}
+
+.content-container-title {
+    margin-bottom: 16px;
+}
+
+.content-container-title h1 {
+    margin: 0;
+    font-size: 1em;
+}
+
+.content-container-title span {
+    color: #1E3190;
+    font-size: 0.7em;
+}
+
+#mainContentDiv {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.board-main-content {
+    height: 80vh;
+    width: calc(100vw / 7);
+    background-color: #F4F2FB;
+}
+
+h3 {
+    margin: 0;
+}
+
+#toDoContent {
+    padding-top: 8px;
+}
+
+.task-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px;
+    border-style: solid;
+    border-color: lightgray;
+    border-radius: 10px;
+    margin: 8px;
+    padding: 8px;
+}
+
+.category {
+    color: lightgray;
+}
+
