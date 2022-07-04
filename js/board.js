@@ -200,7 +200,7 @@ function moveTicketLeft(id) {
     let ticketStatus = data[id]["status"];
     for (let i = 0; i < taskStatus.length; i++) {
         let element = taskStatus[i];
-        if (element == ticketStatus) {
+        if (element == ticketStatus && i >= 1) {
             data[id]["status"] = taskStatus[i - 1]
             { break; }
         }
@@ -215,7 +215,7 @@ function moveTicketRight(id) {
     let ticketStatus = data[id]["status"];
     for (let i = 0; i < taskStatus.length; i++) {
         let element = taskStatus[i];
-        if (element == ticketStatus) {
+        if (element == ticketStatus && i < taskStatus.length - 1) {
             data[id]["status"] = taskStatus[i + 1]
             { break; }
         }
