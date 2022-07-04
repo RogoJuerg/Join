@@ -48,16 +48,17 @@ function showBacklogData() {
 * class = "".. ${backlog['urgency']}" changes the color depending on urgencies "low","middle" or "high", which are defined in .css.
 */
 function templateBacklogContainer(backlog, backlogIndex) {
+    
     return /*html*/`
  
         <div class="task-container-content ${backlog['urgency']}">
             <div class="task-content">    
                 <div class="person">
-                    <img class="photo" src=" ${backlog.assignedTo[0].img}">
+                    <img class="photo" src=" ${checkAssignedToImg(backlog)}">
               
                     <div class="name-email">
-                    <span> ${backlog.assignedTo[0].first_name} ${backlog.assignedTo[0].last_name}</span> <br>
-                    <span style="color: #6f8bf3f7"> ${backlog.assignedTo[0].email} </span> 
+                    <span> ${checkAssignedToFirstName(backlog)} ${checkAssignedLastName(backlog)}</span> <br>
+                    <span style="color: #6f8bf3f7"> ${checkAssignedEmail(backlog)} </span> 
                     </div> 
                 </div> 
                 <div class="category">${backlog['category']}</div>
@@ -70,6 +71,38 @@ function templateBacklogContainer(backlog, backlogIndex) {
                 <img onclick="deleteTask(${backlogIndex})"class="icon_backlog"title="delete" src="src/img/delete.png">    
              </div>
         </div>`;
+}
+
+function checkAssignedToImg(backlog) {
+    if (backlog.assignedTo[0]) {
+        return backlog.assignedTo[0].img;
+    } else {
+        return "./src/img/profile.png";
+    }
+}
+
+function checkAssignedToFirstName(backlog) {
+    if (backlog.assignedTo[0]) {
+        return backlog.assignedTo[0].first_name;
+    } else {
+        return " ";
+    }
+}
+
+function checkAssignedLastName(backlog) {
+    if (backlog.assignedTo[0]) {
+        return backlog.assignedTo[0].last_name;
+    } else {
+        return " ";
+    }
+}
+
+function checkAssignedEmail(backlog) {
+    if (backlog.assignedTo[0]) {
+        return backlog.assignedTo[0].email;
+    } else {
+        return " ";
+    }
 }
 
 
