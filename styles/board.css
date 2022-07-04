@@ -36,6 +36,7 @@ h2 {
 h3 {
     margin: 4px;
     font-size: initial;
+    overflow-wrap: anywhere;
 }
 
 #toDoContent {
@@ -126,7 +127,24 @@ h3 {
   .arrows img {
     width: 16px;
     height: 16px;
+    display: none;
   }
+
+
+
+
+  @media (max-width:1111px) {
+    .board-main-content {
+        width: calc(100vw / 4.4);
+      }
+
+      .arrows img {
+        display: unset;
+      }
+
+  }
+
+
 
   @media (max-width:768px) {
     .delete-icon {

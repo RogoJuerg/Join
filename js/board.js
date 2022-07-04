@@ -105,8 +105,8 @@ function addHTML(currentArray, id) {
                 </button>
                 <div class="panel">
                 <div class="arrows">
-                        <img src="src/img/arrow-icon-left.png" onclick="moveTicketLeft(${currentArray})">
-                        <img src="src/img/arrow-icon-right.png" onclick="moveTicketRight(${currentArray})">
+                        <img src="src/img/arrow-icon-left.png" onclick="moveTicketLeft(${id})">
+                        <img src="src/img/arrow-icon-right.png" onclick="moveTicketRight(${id})">
                     </div>
                     <span class="description">${currentArray["description"]}</span>
                 </div>
@@ -196,18 +196,47 @@ async function deleteTicket() {
 }
 
 
-//function moveTicketLeft(ticket) {
-//    for (let i = 0; i < taskStatus.length; i++) {
-//        element = taskStatus[i];
-//
-//        if (element == ticket.status) {
-//            let newIndex = i - 1;
-//            let newElement =  taskStatus[newIndex];
-//            ticket.status = newElement;
-//        }
-//        
-//    }
-//}
+function moveTicketLeft(id) {
+    let ticketStatus = data[id]["status"];
+    for (let i = 0; i < taskStatus.length; i++) {
+        let element = taskStatus[i];
+        if (element == ticketStatus) {
+            data[id]["status"] = taskStatus[i - 1]
+            { break; }
+        }
+    }
+    showTickets();
+    readyForOpenTask();
+    saveData();
+}
+
+
+function moveTicketRight(id) {
+    let ticketStatus = data[id]["status"];
+    for (let i = 0; i < taskStatus.length; i++) {
+        let element = taskStatus[i];
+        if (element == ticketStatus) {
+            data[id]["status"] = taskStatus[i + 1]
+            { break; }
+        }
+    }
+    showTickets();
+    readyForOpenTask();
+    saveData();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
