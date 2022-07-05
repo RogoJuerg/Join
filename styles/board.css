@@ -130,6 +130,11 @@ h3 {
     display: none;
   }
 
+  .arrows img:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  }
+
 
 
 
@@ -142,14 +147,16 @@ h3 {
         display: unset;
       }
 
+      .delete-icon {
+        margin-top: 50px;
+    }
+
   }
 
 
 
   @media (max-width:768px) {
-    .delete-icon {
-        margin-top: 50px;
-    }
+    
 
     h2 {
         font-size: 18px;

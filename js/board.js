@@ -101,11 +101,12 @@ function addHTML(currentArray, id) {
                         <h3>${currentArray["title"]}</h3>
                         <img src="${checkAssignedTo(currentArray, id)}">
                     </div>
-                    <span class="date">${currentArray["dueTo"]}</span>
+                    <span id="date${id}" class="date">${getDate(currentArray["dueTo"], id)} days left</span>
                 </button>
                 <div class="panel">
                 <div class="arrows">
                         <img src="src/img/arrow-icon-left.png" onclick="moveTicketLeft(${id})">
+                        <img class="click-delete-icon" src="src/img/delete.png" onclick="deleteByClick(${id})">
                         <img src="src/img/arrow-icon-right.png" onclick="moveTicketRight(${id})">
                     </div>
                     <span class="description">${currentArray["description"]}</span>
@@ -190,6 +191,16 @@ async function saveData() {
 async function deleteTicket() {
     await data.splice(currentDraggedElement, 1);
     allTasks = data;
+    saveData();
+    showTickets();
+    readyForOpenTask();
+    saveData();
+}
+
+async function deleteByClick(id) {
+    await data.splice(id, 1)
+    saveData();
+    console.log(data);
     showTickets();
     readyForOpenTask();
     saveData();
@@ -223,6 +234,16 @@ function moveTicketRight(id) {
     showTickets();
     readyForOpenTask();
     saveData();
+}
+
+function getDate(todue, id) {
+const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+const firstDate = new Date();
+const secondDate = new Date(todue);
+
+const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+return diffDays;
+
 }
 
 
