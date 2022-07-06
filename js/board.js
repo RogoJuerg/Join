@@ -99,9 +99,9 @@ function addHTML(currentArray, id) {
                 </div>
                     <div class="ticket-header">
                         <h3>${currentArray["title"]}</h3>
-                        <img src="${checkAssignedTo(currentArray, id)}">
+                        <img class="ticket-img" src="${checkAssignedTo(currentArray, id)}">
                     </div>
-                    <span id="date${id}" class="date">${getDate(currentArray["dueTo"], id)} days left</span>
+                    <span id="date${id}" class="date">${getDate(currentArray["dueTo"], id)}</span>
                 </button>
                 <div class="panel">
                 <div class="arrows">
@@ -110,7 +110,11 @@ function addHTML(currentArray, id) {
                         <img src="src/img/arrow-icon-right.png" onclick="moveTicketRight(${id})">
                     </div>
                     <span class="description">${currentArray["description"]}</span>
+                    <div>
+                    <img class="ticket-img" src="src/img/add-user.png">
                 </div>
+                </div>
+                
             </div>
          `;
 }
@@ -242,7 +246,18 @@ const firstDate = new Date();
 const secondDate = new Date(todue);
 
 const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
-return diffDays;
+let fixedDays = diffDays + 1
+
+if (firstDate < secondDate) {
+    return fixedDays + "day's left";
+}
+if (firstDate == secondDate) {
+    return "today";
+}
+else {
+    return "the deadline has come";
+}
+
 
 }
 

@@ -112,7 +112,7 @@ h3 {
     justify-content: space-between;
     align-items: center;
   }
-  .ticket-header img {
+  .ticket-img {
     border: 1px;
     border-radius: 100%;
     height: 32px;
@@ -133,6 +133,10 @@ h3 {
   .arrows img:hover{
   cursor: pointer;
   transform: scale(1.1);
+  }
+
+  .red-date {
+    color: red;
   }
 
 
