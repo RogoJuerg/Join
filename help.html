@@ -12,6 +12,7 @@
 
     <script src="./js/mini_backend.js"></script>
     <script src="./js/backlog.js"></script>
+    <script src="./js/help.js"></script>
 
     <script src="./js/script.js"></script>
 
@@ -28,30 +29,42 @@
                     <h1>HELP</h1>
                     <span class="title-description">How to use the Join app</span>
                 </header>
-                <div class="">
+                <div>
                     <!-- List -->
                     <ol>
                         <li>Create a task on the "Add Task" page</li>
-                        <img src="src/img/addTask.JPG" alt="AddTask" class="help-img">
-                        <li>On following "Backlog" page you can find the created tasks. 
-                            On the right side the task can be sent to the board, edited or deleted </li>
-                        <img src="src/img/backlog.JPG" alt="Backlog" class="help-img">
-                        <li> Click on middle icon of the picture 2. Save the changes on the below open task dialog. </li>
-                            <img src="src/img/openTask.JPG" alt="Backlog" class="help-img">
-                      
-                    <li>Click on the right/third icon of the picture 2 &nbsp <img width="20px"src="src/img/send_to_board.png">
-                        &nbsp to send the task to the "board"</li>
-                
-                    <li>The tasks sent to the "Board" page, are displayed first in the "To Do" column and can be moved
-                        with drag & drop depending on the processing status.</li>
-                    <img src="src/img/board.JPG" alt="Board" class="help-img">
-                </ol>
-            </div>
-    </div>
-</div
->
+                        <img onclick="openBigImg('img1')" src="src/img/addTask.JPG" alt="AddTask" class="help-img">
 
-    </main>
+                        <li>On following "Backlog" page you can find the created tasks.
+                            On the right side the task can be sent to the board, edited or deleted </li>
+                        <img onclick="openBigImg('img2')" src="src/img/backlog.JPG" alt="Backlog" class="help-img">
+
+                        <li> Click on middle icon of the picture 2. Save the changes on the below open task dialog.
+                        </li>
+                        <img src="src/img/openTask.JPG" alt="Backlog" class="help-img">
+
+                        <li>Click on the right/third icon of the picture 2 &nbsp <img width="20px"
+                                src="src/img/send_to_board.png">
+                            &nbsp to send the task to the "board"</li>
+
+                        <li>The tasks sent to the "Board" page, are displayed first in the "To Do" column and can be
+                            moved
+                            with drag & drop depending on the processing status.</li>
+                        <img src="src/img/board.JPG" alt="Board" class="help-img">
+
+                    </ol>
+                </div>
+            </div>
+
+            <div id="imgBig">
+
+            </div>
+
+        </main>
+
+
+
+
 
 
 </body>
