@@ -1,4 +1,4 @@
-setURL('http://gruppe-256.developerakademie.net/smallest_backend_ever');
+setURL('https://gruppe-256.developerakademie.net/smallest_backend_ever');
 let data = [];
 let users = [];
 

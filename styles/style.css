@@ -101,6 +101,8 @@ main {
 
 #menu-links {
     margin-top: 50px;
+    display:flex;
+    flex-direction: column;
 }
 
 .menu-links-mobile {
@@ -318,7 +320,6 @@ nav * {
     .menu-links-mobile {
         margin: 12px;
         flex-direction: row;
-        gap:100px;
     }
 
     .user {
