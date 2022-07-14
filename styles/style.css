@@ -317,6 +317,8 @@ nav * {
 
     .menu-links-mobile {
         margin: 12px;
+        flex-direction: row;
+        gap:100px;
     }
 
     .user {
