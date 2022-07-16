@@ -12,17 +12,11 @@
     <script src="./js/mini_backend.js"></script>
     <script src="./js/backlog.js"></script>
     <script src="./js/script.js"></script>
-    <script src="./js/board.js"></script>
-    <script src="./js/add-task.js"></script>
-
 
     <title>Join - Backlog</title>
 </head>
 
 <body onload=" initBacklog()">
-    <div id="taskopen-bg-backlog">
-
-    </div>
     <div include-html="./templates/navbar.html"></div>
 
     <main>
@@ -31,18 +25,86 @@
                 <h1>Backlog</h1>
                 <span>Learning Management System Project</span>
             </div>
-            <div class="backlog-content">
-                <div class="backlog-list-title">
-                    <div class="title-name"> ASSIGNED TO </div>
-                    <div class="title-category"> CATEGORY </div>
-                    <div class="title-details"> DETAILS </div>
-                </div>
-                <div id="backlogContainer" class="backlog-container">
+
+            <div class="tasks-container">
+                <div class="tasks-content">
+                    <div class="task-ticket-container">
+                        <div class="task-ticket">
+                            <div onclick="openTicket()" id="ticketButton" class="ticket-button">
+                                <span>EXPAND TO EDIT</span>
+                            </div>
+                            <div class="ticket-user-img">
+                                <img style="z-index: 3;" src="./src/img/user/img_01.png">
+                                <img style="left: 32px; z-index: 2;" src="./src/img/user/img_02.png">
+                                <img style="left: 64px; z-index: 1;" src="./src/img/user/img_03.png">
+                            </div>
+                            <div class="ticket-title">
+                                <span>Title</span>
+                            </div>
+                            <div class="ticket-category">
+                                <span>Category</span>
+                            </div>
+                            <div id="ticketDetails" class="ticket-details">
+                                <span>Details are shown here until a certain lenght Lorem ipsum dolor sit amet
+                                    consectetur adipisicing elit. Corrupti debitis dicta accusamus a facilis,
+                                    perferendis consectetur exercitationem sunt nam totam rem veritatis qui corporis
+                                    ipsam aliquam culpa assumenda officiis incidunt.</span>
+                            </div>
+                            <div id="ticketExpanded" class="ticket-expanded d-none">
+                                <div class="expanded-user-settings">
+                                    <div class="user-selection-container">
+                                        <div class="user-selection-content">
+                                            <div class="user-selection-user">
+                                                <img src="./src/img/user/img_01.png">
+                                                <span>FirstN LastN</span>
+                                            </div>
+
+                                            <div class="user-selection-user">
+                                                <img src="./src/img/user/img_01.png">
+                                                <span>FirstN LastN</span>
+                                            </div>
+
+                                            <div class="user-selection-user">
+                                                <img src="./src/img/user/img_01.png">
+                                                <span>FirstN LastN</span>
+                                            </div>
+
+                                            <div class="user-selection-user">
+                                                <img src="./src/img/user/img_01.png">
+                                                <span>FirstN LastN</span>
+                                            </div>
+
+                                            <div class="user-selection-user">
+                                                <img src="./src/img/user/img_01.png">
+                                                <span>FirstN LastNLongwer</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ticket-options-container">
+                                    <div class="ticket-options">
+                                        <div class="delete-img-cont" onmouseover="textShow('delete Task')" onmouseleave="textShow('choose an option')">
+                                            <img class="delete-img" src="./src/img/delete.png">
+                                        </div>
+                                        <div class="send-to-board-img-cont" onmouseover="textShow('move to board')" onmouseleave="textShow('choose an option')">
+                                            <img class="send-to-board-img" src="./src/img/send_to_board.png">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span id="textDelete">choose an option</span>
+                                    </div>
+                                </div>
+                                <div class="expanded-urgency-settings">
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--class="task-container" -->
-        <div id="taskEdit" class="task-open">
+
+
         </div>
     </main>
 

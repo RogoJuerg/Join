@@ -51,7 +51,9 @@ main {
 }
 
 .content-container {
-    margin: 32px 16px 32px 176px;
+    margin-top: 48px;
+    margin-left: 160px;
+    margin-right: 48px;
     width: 100%;
 }
 
@@ -112,7 +114,7 @@ main {
     color: #b1b4c8;
     font-size: 20px;
     padding-left: 1.5em !important;
-    transition: all 250ms ease-in-out;
+    transition: all 125ms ease-in-out;
 }
 
 .nav-link:hover {
@@ -140,103 +142,6 @@ nav * {
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-}
-
-/* Dev Tools */
-
-.dev-tools-container {
-    z-index: 999;
-    display: flex;
-    position: absolute;
-    right: 0;
-    top: 25%;
-}
-
-.dev-tools-content {
-    display: flex;
-    width: 250px;
-    height: 500px;
-    background-color: gray;
-    border: 2px solid black;
-    flex-direction: column;
-}
-
-.dev-tools-user-control-center {
-    display: flex;
-    margin: 4px;
-    background-color: black;
-    width: 97%;
-    height: 100%;
-}
-
-.dev-tools-user-overview {
-    display: flex;
-    flex-direction: column;
-}
-
-.user-overview {
-    color: greenyellow;
-    display: flex;
-    flex-direction: column;
-}
-
-.user-information {
-    display: flex;
-    flex-direction: column;
-    color: greenyellow;
-}
-
-.user-oberview-selection {
-    display: flex;
-    color: greenyellow;
-}
-
-.user-oberview-selection span {
-    margin-right: 12px;
-}
-
-.user-oberview-selection span:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.user-amount-selection span:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.register-user-menu {
-    color: greenyellow;
-}
-
-.register-user-row {
-    display: flex;
-    justify-content: space-between;
-}
-
-.register-user-row input {
-    background-color: transparent;
-    -webkit-appearance: none;
-    outline: none;
-    color: greenyellow;
-    border: none;
-    border-bottom: 1px solid greenyellow;
-    width: 60%;
-}
-
-.register-user-row select {
-    background-color: transparent;
-    outline: none;
-    border: none;
-    width: 60%;
-    color: greenyellow;
-}
-
-.register-user-row option {
-    background-color: black;
-    -webkit-appearance: none;
-    outline: none;
-    color: greenyellow;
 }
 
 .mobile-menu {
@@ -293,7 +198,7 @@ nav * {
     }
 
     .content-container {
-        margin: 70px 32px 176px;
+        margin: 70px 32px;
     }
 
     #menubar {

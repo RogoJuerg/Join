@@ -86,6 +86,7 @@
     background-size: 16px;
     background-position-x: 96%;
     background-position-y: 58%;
+    cursor: pointer;
 }
 
 .form-description {
@@ -145,6 +146,7 @@
     width: 50px;
     transform: translateX(-12px);
     transition: all 125ms ease-in-out;
+    cursor: pointer;
 }
 
 .form-urgency {
@@ -176,6 +178,7 @@
     background-position-x: 96%;
     background-position-y: 58%;
     transition: all 125ms ease-in-out;
+    cursor: pointer;
 }
 
 .form-assigned-to {
@@ -239,7 +242,8 @@
 .assigned-to-user-img-add-user:hover {
     border: 2px solid #1E3190;
     transition: all 125ms ease-in-out;
-    filter: contrast(110%)
+    filter: contrast(110%);
+    cursor: pointer;
 }
 
 .assigned-to-user-img-add-user:active {
@@ -272,6 +276,7 @@
     color: white;
     background-color: red;
     border: 2px solid lightgray;
+    cursor: pointer;
 }
 
 .btn-1:active {
@@ -308,6 +313,7 @@
     border: 2px solid #1E3190;
     color: #1E3190;
     transition: all 125ms ease-in-out;
+    cursor: pointer;
 }
 
 .btn-2:active {
@@ -378,8 +384,8 @@
     top: 42px;
     left: 0;
     transform: translateX(64px);
-    height: 284px;
-    width: 84px;
+    height: 132px;
+    width: 74px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -408,6 +414,7 @@
 /* Handle on hover */
 .user-selection-container::-webkit-scrollbar-thumb:hover {
     background-color: #1E3190;
+    cursor: pointer;
 }
 
 .user-selection-content {
