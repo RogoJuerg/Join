@@ -111,7 +111,7 @@ function addHTML(currentArray, id) {
                     </div>
                     <span class="description">${currentArray["description"]}</span>
                     <div>
-                    <img class="ticket-img" src="src/img/add-user.png">
+                    <a onclick="backToBacklog(${id})">put back to Backlog</a>
                 </div>
                 </div>
                 
@@ -154,6 +154,7 @@ function allowDrop(ev) {
  */
 function moveTo(status) {
     allTasks[currentDraggedElement]['status'] = status;
+    saveData();
     showTickets();
     readyForOpenTask();
     saveData();
@@ -208,6 +209,13 @@ async function deleteByClick(id) {
     showTickets();
     readyForOpenTask();
     saveData();
+}
+
+function backToBacklog(id) {
+    allTasks[id]["status"] = "backlog";
+    saveData();
+    showTickets();
+    readyForOpenTask();
 }
 
 
