@@ -139,6 +139,20 @@ h3 {
     color: red;
   }
 
+  .put-to-backlog {
+    font-size: small;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border: solid;
+    margin-top: 16px;
+  }
+
+  .put-to-backlog:hover {
+    cursor: pointer;
+    background-color: #f4f2fb ;
+  }
+
 
 
 

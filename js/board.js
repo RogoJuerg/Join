@@ -19,6 +19,11 @@ async function initBoard() {
 
 }
 
+
+/**
+ * 
+ * load all tickets and put it in a local variable "allTasks"
+ */
 function loadTickets() {
     for (let i = 0; i < data.length; i++) {
         allTasks.push(data[i]);
@@ -111,7 +116,7 @@ function addHTML(currentArray, id) {
                     </div>
                     <span class="description">${currentArray["description"]}</span>
                     <div>
-                    <a onclick="backToBacklog(${id})">put back to Backlog</a>
+                    <a class="put-to-backlog" onclick="backToBacklog(${id})">put back to Backlog</a>
                 </div>
                 </div>
                 
@@ -120,7 +125,13 @@ function addHTML(currentArray, id) {
 }
 
 
-
+/**
+ * check the assignedTo "status" and return a alternative string if this is empty
+ * 
+ * @param {string} currentArray - sometimes needed if the alternative returns
+ * @param {string} id - position of the ticket in the array
+ * @returns - correct link or alternative
+ */
 function checkAssignedTo(currentArray, id) {
     let a = true;
     if (data[id].assignedTo[0]) {
@@ -192,7 +203,10 @@ async function saveData() {
     await backend.setItem('tickets', JSON.stringify(data));
 }
 
-
+/**
+ * 
+ * delete complete task by drag and drop
+ */
 async function deleteTicket() {
     await data.splice(currentDraggedElement, 1);
     allTasks = data;
@@ -202,6 +216,11 @@ async function deleteTicket() {
     saveData();
 }
 
+/**
+ * 
+ * delete complete task by click(only in responsive)
+ * @param {string} id - ticket position in array
+ */
 async function deleteByClick(id) {
     await data.splice(id, 1)
     saveData();
@@ -211,6 +230,11 @@ async function deleteByClick(id) {
     saveData();
 }
 
+/**
+ * 
+ * change status of the ticket to backlog and refresh page
+ * @param {string} id 
+ */
 function backToBacklog(id) {
     allTasks[id]["status"] = "backlog";
     saveData();
@@ -219,6 +243,11 @@ function backToBacklog(id) {
 }
 
 
+/**
+ * 
+ * only in responsive, change status to the status of the left side
+ * @param {string} id - ticket position in array
+ */
 function moveTicketLeft(id) {
     let ticketStatus = data[id]["status"];
     for (let i = 0; i < taskStatus.length; i++) {
@@ -234,6 +263,10 @@ function moveTicketLeft(id) {
 }
 
 
+/**
+ * only in responsive, change the status to the status of the right side
+ * @param {string} id  - ticket position in array
+ */
 function moveTicketRight(id) {
     let ticketStatus = data[id]["status"];
     for (let i = 0; i < taskStatus.length; i++) {
@@ -248,6 +281,13 @@ function moveTicketRight(id) {
     saveData();
 }
 
+
+/**
+ * get the todue and change it in "days left"
+ * @param {string} todue - date of todue
+ * @param {string} id - ticket position in array
+ * @returns - formated todue date in "days left", or "deadline has come"
+ */
 function getDate(todue, id) {
 const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
 const firstDate = new Date();
