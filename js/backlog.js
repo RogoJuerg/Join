@@ -1,105 +1,92 @@
+let availableUsers = [];
+let taskData = [];
+
 
 async function initBacklog() {
     await init();
+    setData();
+    generateTask();
 }
 
 
-function openTicket() {
-    document.getElementById('ticketButton').classList.toggle('d-none');
-    document.getElementById('ticketExpanded').classList.toggle('d-none');
-    expandTicketDetails();
+function setData() {
+    availableUsers = users;
+    taskData = data;
 }
 
 
-function expandTicketDetails() {
-    document.getElementById('ticketDetails').classList.toggle('ticket-details');
-    document.getElementById('ticketDetails').classList.toggle('ticket-details-expanded');
-    document.getElementById('ticketExpanded').style.zIndex = 5;
-    document.getElementById('ticketDetails').style.zIndex = 6;
+function openTicket(index) {
+    document.getElementById(`ticketButton${index}`).classList.toggle('d-none');
+    document.getElementById(`ticketExpanded${index}`).classList.toggle('d-none');
+    expandTicketDetails(index);
 }
 
 
-function textShow(content) {
-    document.getElementById('textOptions').innerHTML = content;
-    document.getElementById('textOptions').classList.toggle('text-anim');
+function expandTicketDetails(index) {
+    document.getElementById(`ticketDetails${index}`).classList.toggle('ticket-details');
+    document.getElementById(`ticketDetails${index}`).classList.toggle('ticket-details-expanded');
+    document.getElementById(`ticketExpanded${index}`).style.zIndex = 10;
+    document.getElementById(`ticketDetails${index}`).style.zIndex = 11;
+}
+
+
+function textShow(content, index) {
+    document.getElementById(`textOptions${index}`).innerHTML = content;
+    document.getElementById(`textOptions${index}`).classList.toggle('text-anim');
 }
 
 
 function generateTask() {
-    document.getElementById('taskContent').innerHTML += taskHtml();
+    for (let i = 0; i < taskData.length; i++) {
+        document.getElementById('taskContent').innerHTML += taskHtml(i);
+        renderAssignedUser(i);
+        renderUserSelection(i);
+    }
+    
 }
 
 
-function taskHtml() {
-    return /*html*/`
+function taskHtml(i) {
+    return /*html*/ `
     <div class="task-ticket-container">
     <div class="task-ticket" id="taskTicket">
-        <div onclick="openTicket()" id="ticketButton" class="ticket-button">
+        <div onclick="openTicket(${i})" id="ticketButton${i}" class="ticket-button">
             <span>EXPAND TO EDIT</span>
         </div>
-        <div class="ticket-user-img">
-            <img style="z-index: 3;" src="./src/img/user/img_01.png">
-            <img style="left: 32px; z-index: 2;" src="./src/img/user/img_02.png">
-            <img style="left: 64px; z-index: 1;" src="./src/img/user/img_03.png">
+        <div class="ticket-user-img" id="assignedUser${i}">
+
         </div>
         <div class="ticket-title">
-            <span>Title</span>
+            <span>${taskData[i].title}</span>
         </div>
         <div class="ticket-category">
-            <span>Category</span>
+            <span>${taskData[i].category}</span>
         </div>
-        <div id="ticketDetails" class="ticket-details">
-            <span>Details are shown here until a certain lenght Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Corrupti debitis dicta accusamus a facilis,
-                perferendis consectetur exercitationem sunt nam totam rem veritatis qui corporis
-                ipsam aliquam culpa assumenda officiis incidunt.</span>
+        <div id="ticketDetails${i}" class="ticket-details">
+            <span>${taskData[i].description}</span>
         </div>
-        <div id="ticketExpanded" class="ticket-expanded d-none">
+        <div id="ticketExpanded${i}" class="ticket-expanded d-none">
             <div class="expanded-user-settings">
                 <div class="user-selection-container">
-                    <div class="user-selection-content">
-                        <div class="user-selection-user">
-                            <img src="./src/img/user/img_01.png">
-                            <span>FirstN LastN</span>
-                        </div>
-
-                        <div class="user-selection-user">
-                            <img src="./src/img/user/img_01.png">
-                            <span>FirstN LastN</span>
-                        </div>
-
-                        <div class="user-selection-user">
-                            <img src="./src/img/user/img_01.png">
-                            <span>FirstN LastN</span>
-                        </div>
-
-                        <div class="user-selection-user">
-                            <img src="./src/img/user/img_01.png">
-                            <span>FirstN LastN</span>
-                        </div>
-
-                        <div class="user-selection-user">
-                            <img src="./src/img/user/img_01.png">
-                            <span>FirstN LastNLongwer</span>
-                        </div>
+                    <div id="userSelection${i}" class="user-selection-content">
 
                     </div>
                 </div>
             </div>
             <div class="ticket-options-container">
                 <div class="ticket-options">
-                    <div class="delete-img-cont" onmouseover="textShow('delete Task')" onmouseleave="textShow('choose an option')">
+                    <div class="delete-img-cont" onmouseover="textShow('delete Task', ${i})" onmouseleave="textShow('choose an option')">
                         <img class="delete-img" src="./src/img/delete.png">
                     </div>
-                    <div class="send-to-board-img-cont" onmouseover="textShow('move to board')" onmouseleave="textShow('choose an option')">
+                    <div class="send-to-board-img-cont" onmouseover="textShow('move to board', ${i})" onmouseleave="textShow('choose an option')">
                         <img class="send-to-board-img" src="./src/img/send_to_board.png">
                     </div>
-                    <div class="send-to-board-img-cont" onmouseover="textShow('save changes')" onmouseleave="textShow('choose an option')">
+                    <div class="send-to-board-img-cont" onmouseover="textShow('save changes', ${i})" onmouseleave="textShow('choose an option')">
                         <img class="send-to-board-img" src="./src/img/save.png">
                     </div>
                 </div>
                 <div>
-                    <span id="textOptions">choose an option</span>
+                    <span id="textOptions${i}">choose an option</span>
                 </div>
             </div>
             <div class="expanded-urgency-settings">
@@ -109,4 +96,32 @@ function taskHtml() {
     </div>
 </div>
     `;
+}
+
+
+function renderUserSelection(index) {
+    document.getElementById(`userSelection${index}`).innerHTML = ``;
+    for (let i = 0; i < availableUsers.length; i++) {
+        document.getElementById(`userSelection${index}`).innerHTML += /*html*/ `
+            <div class="user-selection-user">
+                <img src="./src/img/user/img_01.png">
+                <span>${availableUsers[i].first_name} ${availableUsers[i].last_name}</span>
+            </div>
+        `;
+    }
+}
+
+
+function renderAssignedUser(index) {
+    let zIndex = taskData[index].assignedTo.length;
+    let left = 0;
+    for (let i = 0; i < taskData[index].assignedTo.length; i++) {
+        if (taskData[index].assignedTo) {
+            document.getElementById(`assignedUser${index}`).innerHTML += /*html*/ `
+                <img style="left: ${left}px; z-index: ${zIndex};" src="${taskData[index].assignedTo[i].img}">
+        `;
+            zIndex--;
+            left += 32;
+        }
+    }
 }
