@@ -76,7 +76,8 @@ function taskHtml(i) {
             <div class="ticket-options-container">
                 <div class="ticket-options">
                     <div class="delete-img-cont" onmouseover="textShow('delete Task', ${i})" 
-                            onmouseleave="textShow('choose an option', ${i})">
+                            onmouseleave="textShow('choose an option', ${i})"
+                            onclick="deleteTask(${i})">
                         <img class="delete-img" src="./src/img/delete.png">
                     </div>
                     <div class="send-to-board-img-cont" onmouseover="textShow('move to board', ${i})" 
@@ -150,4 +151,12 @@ function moveTaskToBoard(index) {
 
 async function saveDataToServer() {
     await backend.setItem('tickets', JSON.stringify(taskData));
+}
+
+
+function deleteTask(index) {
+    taskData.splice(index, 1);
+    resetIdInData();
+    generateTask();
+    saveDataToServer();
 }
