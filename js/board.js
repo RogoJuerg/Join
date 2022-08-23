@@ -62,8 +62,6 @@ function getTasks(currentStatus) {
         let id = task['id'];
         content.innerHTML += addHTML(task, id,);
         document.getElementById('ticket' + id).classList.add(checkPriority(task))
-
-
     }
 }
 
@@ -109,15 +107,16 @@ function addHTML(currentArray, id) {
                     <span id="date${id}" class="date">${getDate(currentArray["dueTo"], id)}</span>
                 </button>
                 <div class="panel">
-                <div class="arrows">
-                        <img src="src/img/arrow-icon-left.png" onclick="moveTicketLeft(${id})">
-                        <img class="click-delete-icon" src="src/img/delete.png" onclick="deleteByClick(${id})">
-                        <img src="src/img/arrow-icon-right.png" onclick="moveTicketRight(${id})">
-                    </div>
-                    <span class="description">${currentArray["description"]}</span>
+                <span class="description">${currentArray["description"]}</span>
+                
                     <div>
-                    <a class="put-to-backlog" onclick="backToBacklog(${id})">put back to Backlog</a>
+                    <img src="src/img/back-to-backlog.png" title="put it back to Backlog" class="put-to-backlog" onclick="backToBacklog(${id})"></img>
+                    <div class="arrows">
+                    <img src="src/img/arrow-icon-left.png" onclick="moveTicketLeft(${id})">
+                    <img class="click-delete-icon" src="src/img/delete.png" onclick="deleteByClick(${id})">
+                    <img src="src/img/arrow-icon-right.png" onclick="moveTicketRight(${id})">
                 </div>
+                    </div>
                 </div>
                 
             </div>
@@ -307,6 +306,13 @@ else {
 }
 
 
+}
+
+
+function showInResponsive() {
+    let currentCollumn = document.getElementById('responsiveHeadline');
+    let currentValue = currentCollumn.value;
+    console.log("the current collumn is" + currentValue)
 }
 
 
