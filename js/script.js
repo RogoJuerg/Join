@@ -2,6 +2,11 @@ setURL('https://gruppe-256.developerakademie.net/smallest_backend_ever');
 let data = [];
 let users = [];
 
+let taskCategories = {
+    'value': ['0', 'management', 'programming', 'design'],
+    'name': ['none', 'Management', 'Programming', 'Design']
+}
+
 
 async function init() {
     await downloadBackend();

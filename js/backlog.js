@@ -15,7 +15,7 @@ function setData() {
 }
 
 
-function openTicket(index) {
+function toggleTicket(index) {
     document.getElementById(`ticketButton${index}`).classList.toggle('d-none');
     document.getElementById(`ticketExpanded${index}`).classList.toggle('d-none');
     expandTicketDetails(index);
@@ -23,10 +23,11 @@ function openTicket(index) {
 
 
 function expandTicketDetails(index) {
-    document.getElementById(`ticketDetails${index}`).classList.toggle('ticket-details');
-    document.getElementById(`ticketDetails${index}`).classList.toggle('ticket-details-expanded');
+    let ticketDetails = document.getElementById(`ticketDetails${index}`);
+    ticketDetails.classList.toggle('ticket-details');
+    ticketDetails.classList.toggle('ticket-details-expanded');
+    ticketDetails.style.zIndex = 11;
     document.getElementById(`ticketExpanded${index}`).style.zIndex = 10;
-    document.getElementById(`ticketDetails${index}`).style.zIndex = 11;
 }
 
 
@@ -52,19 +53,19 @@ function taskHtml(i) {
     return /*html*/ `
     <div class="task-ticket-container">
     <div class="task-ticket" id="taskTicket">
-        <div onclick="openTicket(${i})" id="ticketButton${i}" class="ticket-button">
+        <div onclick="toggleTicket(${i})" id="ticketButton${i}" class="ticket-button">
             <span>EXPAND TO EDIT</span>
         </div>
         <div class="ticket-user-img" id="assignedUser${i}">
         </div>
-        <div class="ticket-title">
+        <div id="ticketTitle${i}"  class="ticket-title">
             <span>${taskData[i].title}</span>
         </div>
-        <div class="ticket-category">
+        <div id="ticketCategory${i}" class="ticket-category">
             <span>${taskData[i].category}</span>
         </div>
         <div id="ticketDetails${i}" class="ticket-details">
-            <span>${taskData[i].description}</span>
+            <span id="ticketDescription${i}">${taskData[i].description}</span>
         </div>
         <div id="ticketExpanded${i}" class="ticket-expanded d-none">
             <div class="expanded-user-settings">
@@ -85,9 +86,10 @@ function taskHtml(i) {
                             onclick="moveTaskToBoard(${i})">
                         <img class="send-to-board-img" src="./src/img/send_to_board.png">
                     </div>
-                    <div class="send-to-board-img-cont" onmouseover="textShow('save changes', ${i})" 
-                            onmouseleave="textShow('choose an option', ${i})">
-                        <img class="send-to-board-img" src="./src/img/save.png">
+                    <div id="editIconDiv${i}" class="send-to-board-img-cont" onmouseover="textShow('edit task', ${i})" 
+                            onmouseleave="textShow('choose an option', ${i})"
+                            onclick="openEditMode(${i})">
+                        <img id="editIcon${i}" class="send-to-board-img" src="./src/img/edit.png">
                     </div>
                 </div>
                 <div>
@@ -159,4 +161,104 @@ function deleteTask(index) {
     resetIdInData();
     generateTask();
     saveDataToServer();
+}
+
+
+function replaceTagDescription(index) {
+    document.getElementById(`ticketDetails${index}`).innerHTML = `<textarea id="ticketDescription${index}">${taskData[index].description}</textarea>`;
+    document.getElementById(`ticketDescription${index}`).classList.add('ticket-textarea');
+}
+
+
+function replaceTagCategory(index) {
+    document.getElementById(`ticketCategory${index}`).innerHTML = 
+        `<select name="Tasks>
+            ${rendertaskCategoryOption()}
+        `;
+        document.getElementById(`ticketCategory${index}`).classList.add('form-category');
+}
+
+
+function replaceTagTitle(index) {
+    document.getElementById(`ticketTitle${index}`).innerHTML = `<input id="ticketTitleText${index}">`;
+    document.getElementById(`ticketTitleText${index}`).value = `${taskData[index].title}`;
+    document.getElementById(`ticketTitle${index}`).classList.add('ticket-title-input');
+}
+
+
+function revertTagDescription(index) {
+    document.getElementById(`ticketDetails${index}`).innerHTML = `<span id="ticketDescription${index}">${taskData[index].description}</span>`;
+    document.getElementById(`ticketDescription${index}`).classList.remove('ticket-textarea');
+}
+
+
+function revertTagTitle(index) {
+    document.getElementById(`ticketTitle${index}`).innerHTML = `<span>${taskData[index].title}</span>`;
+    document.getElementById(`ticketTitle${index}`).classList.remove('ticket-title-input');
+}
+
+
+function revertTagCategory(index) {
+    document.getElementById(`ticketCategory${index}`).innerHTML = `<span>${taskData[index].category}</span>`;
+    document.getElementById(`ticketCategory${index}`).classList.remove('form-category');
+}
+
+
+function openEditMode(index) {
+    replaceTagDescription(index);
+    replaceTagTitle(index);
+    replaceTagCategory(index);
+    changeEditIconToSave(index);
+}
+
+
+function closeEditMode(index) {
+    revertTagDescription(index);
+    revertTagTitle(index);
+    revertTagCategory(index);
+    revertChangeEditIconToSave(index);
+}
+
+
+function saveChangedTicket(index) {
+
+}
+
+
+function changeEditIconToSave(index) {
+    document.getElementById(`editIcon${index}`).src = "./src/img/save.png";
+    document.getElementById(`editIconDiv${index}`).setAttribute(`onmouseover`, `textShow('save changes', ${index})`);
+    document.getElementById(`editIconDiv${index}`).setAttribute(`onclick`, `saveChangedTicket(${index})`);
+}
+
+
+function revertChangeEditIconToSave(index) {
+    document.getElementById(`editIcon${index}`).src = "./src/img/edit.png";
+    document.getElementById(`editIconDiv${index}`).setAttribute(`onmouseover`, `textShow('edit task', ${index})`);
+    document.getElementById(`editIconDiv${index}`).setAttribute(`onclick`, `openEditMode(${index})`);
+}
+
+
+function rendertaskCategoryOption() {
+    let options;
+    for (let i = 0; i < taskCategories.name.length; i++) {
+        options += `
+            <option value"${taskCategories.value[i]}">${taskCategories.name[i]}</option>
+        `;
+    }
+    return options;
+}
+
+
+function getDataFromTicketEdit(index) {
+    //TODO function to get the values of the changed data for a ticket
+}
+
+
+function closeEveryTicketExceptLast(index) {
+    for (let i = 0; i > taskData.length; i++) {
+        if(!i == index) {
+            
+        }
+    }
 }

@@ -59,7 +59,23 @@
     height: 100%;
 }
 
-.ticket-title {}
+.ticket-title {
+    display: flex;
+    width: 30%;
+    margin: 0 8px 0 8px;
+}
+
+
+.ticket-category {
+    display: flex;
+    width: 30%;
+    margin: 0 8px 0 8px;
+    justify-content: left;
+}
+
+.ticket-category span {
+    padding: 0 20% 0 20%;
+}
 
 .ticket-user-img {
     display: flex;
@@ -369,4 +385,56 @@
     100% {
         opacity: 100%;
     }
+}
+
+.ticket-textarea {
+    font-family: 'PT Sans', sans-serif;
+    resize: none;
+    font-size: 1em;
+    font-weight: bold;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    padding: 8px;
+    height: 80%;
+    width: 90%;
+}
+
+.ticket-title-input input {
+    font-family: 'PT Sans', sans-serif;
+    resize: none;
+    font-size: 1em;
+    font-weight: bold;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    padding: 8px;
+    width: 100%;
+}
+
+.ticket-title-input {
+    width: 30%;
+}
+
+.form-category select{
+    width: 100%;
+    height: 40px;
+    font-size: 1em;
+    font-weight: bold;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    padding: 0 8px 0 8px;
+    background: url(/src/img/chevron.png) no-repeat right white;
+    transition: all 125ms ease-in-out;
+    -webkit-appearance: none;
+    background-size: 16px;
+    background-position-x: 96%;
+}
+
+.form-category select:hover {
+    transition: all 125ms ease-in-out;
+    background: url(/src/img/chevron-blue.png) no-repeat right white;
+    -webkit-appearance: none;
+    background-size: 16px;
+    background-position-x: 96%;
+    background-position-y: 58%;
+    cursor: pointer;
 }
