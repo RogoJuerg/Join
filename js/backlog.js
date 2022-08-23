@@ -15,10 +15,19 @@ function setData() {
 }
 
 
-function toggleTicket(index) {
-    document.getElementById(`ticketButton${index}`).classList.toggle('d-none');
-    document.getElementById(`ticketExpanded${index}`).classList.toggle('d-none');
+function openTicket(index) {
+    document.getElementById(`ticketButton${index}`).classList.add('d-none');
+    document.getElementById(`ticketExpanded${index}`).classList.remove('d-none');
     expandTicketDetails(index);
+}
+
+
+function closeTicket(index) {
+    document.getElementById(`ticketButton${index}`).classList.remove('d-none');
+    console.log("closed", index),
+    document.getElementById(`ticketExpanded${index}`).classList.add('d-none');
+    closeTicketDetails(index);
+    closeEditMode(index);
 }
 
 
@@ -28,6 +37,15 @@ function expandTicketDetails(index) {
     ticketDetails.classList.toggle('ticket-details-expanded');
     ticketDetails.style.zIndex = 11;
     document.getElementById(`ticketExpanded${index}`).style.zIndex = 10;
+}
+
+
+function closeTicketDetails(index) {
+    let ticketDetails = document.getElementById(`ticketDetails${index}`);
+    ticketDetails.classList.add('ticket-details');
+    ticketDetails.classList.remove('ticket-details-expanded');
+    ticketDetails.style.zIndex = 9;
+    document.getElementById(`ticketExpanded${index}`).style.zIndex = 8;
 }
 
 
@@ -53,7 +71,7 @@ function taskHtml(i) {
     return /*html*/ `
     <div class="task-ticket-container">
     <div class="task-ticket" id="taskTicket">
-        <div onclick="toggleTicket(${i})" id="ticketButton${i}" class="ticket-button">
+        <div onclick="closeEveryTicketExceptLast(${i})" id="ticketButton${i}" class="ticket-button">
             <span>EXPAND TO EDIT</span>
         </div>
         <div class="ticket-user-img" id="assignedUser${i}">
@@ -171,11 +189,11 @@ function replaceTagDescription(index) {
 
 
 function replaceTagCategory(index) {
-    document.getElementById(`ticketCategory${index}`).innerHTML = 
-        `<select name="Tasks>
+    document.getElementById(`ticketCategory${index}`).innerHTML =
+        `<select id="ticketCategorySelect${index}" name="ticketCategory${index}>
             ${rendertaskCategoryOption()}
-        `;
-        document.getElementById(`ticketCategory${index}`).classList.add('form-category');
+        </select>`;
+    document.getElementById(`ticketCategory${index}`).classList.add('form-category');
 }
 
 
@@ -221,6 +239,8 @@ function closeEditMode(index) {
 
 
 function saveChangedTicket(index) {
+    getDataFromTicketEdit(index);
+    generateTask();
 
 }
 
@@ -251,14 +271,21 @@ function rendertaskCategoryOption() {
 
 
 function getDataFromTicketEdit(index) {
-    //TODO function to get the values of the changed data for a ticket
+    let title = document.getElementById(`ticketTitleText${index}`).value; 
+    let category = document.getElementById(`ticketCategorySelect${index}`).value;
+    let description = document.getElementById(`ticketDescription${index}`).value;
+    let arr = [title, category, description];
+    console.log(arr);
+
 }
 
 
 function closeEveryTicketExceptLast(index) {
-    for (let i = 0; i > taskData.length; i++) {
-        if(!i == index) {
-            
+    for (let i = 0; i < taskData.length; i++) {
+        if (i == index) {
+            openTicket(i);
+        } else {
+            closeTicket(i);
         }
     }
 }

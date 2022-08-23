@@ -4,7 +4,7 @@ let users = [];
 
 let taskCategories = {
     'value': ['0', 'management', 'programming', 'design'],
-    'name': ['none', 'Management', 'Programming', 'Design']
+    'name': ['none', 'management', 'programming', 'design']
 }
 
 
