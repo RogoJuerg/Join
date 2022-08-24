@@ -13,8 +13,9 @@ let i;
 async function initBoard() {
     await init();
     await loadTickets();
-    await showTickets();
-    readyForOpenTask();
+    showTickets();
+    
+    
 
 
 }
@@ -53,7 +54,7 @@ function showTickets() {
  *
  * @param {string} currentStatus - status for using the right tasks and div-IDs
  */
-function getTasks(currentStatus) {
+ function getTasks(currentStatus) {
     let tasks = allTasks.filter(t => t['status'] == currentStatus);
     let content = document.getElementById(currentStatus + "Content");
     content.innerHTML = ``;
@@ -95,16 +96,20 @@ function addHTML(currentArray, id) {
             <div id="ticket${id}" draggable="true" ondragstart="startDragging(${id})" class="task-card">
                 <button class="accordion">
                 <div>
-
                     <span class="category">${currentArray["category"]}</span>
 
 
                 </div>
                     <div class="ticket-header">
                         <h3>${currentArray["title"]}</h3>
-                        <img class="ticket-img" src="${checkAssignedTo(currentArray, id)}">
+                        <img class="ticket-img" src="${checkAssignedTo(
+                          currentArray,
+                          id
+                        )}">
                     </div>
-                    <span id="date${id}" class="date">${getDate(currentArray["dueTo"], id)}</span>
+                    <span id="date${id}" class="date">${getDate(
+      currentArray["dueTo"], id)}
+      </span>
                 </button>
                 <div class="panel">
                 <span class="description">${currentArray["description"]}</span>
@@ -313,7 +318,41 @@ function showInResponsive() {
     let currentCollumn = document.getElementById('responsiveHeadline');
     let currentValue = currentCollumn.value;
     console.log("the current collumn is" + currentValue)
+    getTasksInResponsive(currentValue);
 }
+
+
+
+//unction getTasksInResponsive(currentStatus) {
+//   let tasks = allTasks.filter(t => t['status'] == currentStatus);
+//   let content = document.getElementById(currentCollum);
+//   content.innerHTML = ``;
+//       let task = currentValue;
+//       let id = task['id'];
+//       content.innerHTML += addHTMLresponsive(task, id,);
+//       document.getElementById('ticket' + id).classList.add(checkPriority(task))
+//   }
+
+    
+
+
+/**
+ * filter tasks by status and add in the right column
+ *
+ * @param {string} currentStatus - status for using the right tasks and div-IDs
+ */
+ function getTasksInResponsive(currentStatus) {
+    let tasks = allTasks.filter(t => t['status'] == currentStatus);
+    let content = document.getElementById("responsiveMainContent");
+    content.innerHTML = ``;
+    for (let i = 0; i < tasks.length; i++) {
+        let task = tasks[i];
+        let id = task['id'];
+        content.innerHTML += addHTML(task, id,);
+        document.getElementById('ticket' + id).classList.add(checkPriority(task))
+    }
+}
+
 
 
 
