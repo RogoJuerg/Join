@@ -438,3 +438,10 @@
     background-position-y: 58%;
     cursor: pointer;
 }
+
+.user-selection-user-selected {
+    background-color: #1E3190;
+    transition: all 125ms ease-in-out;
+    color: #e1e1e1;
+    transition: all 125ms ease-in-out;
+}

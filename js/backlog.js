@@ -23,9 +23,8 @@ function openTicket(index) {
 
 
 function closeTicket(index) {
-    document.getElementById(`ticketButton${index}`).classList.remove('d-none');
-    console.log("closed", index),
     document.getElementById(`ticketExpanded${index}`).classList.add('d-none');
+    document.getElementById(`ticketButton${index}`).classList.remove('d-none');
     closeTicketDetails(index);
     closeEditMode(index);
 }
@@ -128,14 +127,13 @@ function renderUserSelection(index) {
     document.getElementById(`userSelection${index}`).innerHTML = ``;
     for (let i = 0; i < availableUsers.length; i++) {
         document.getElementById(`userSelection${index}`).innerHTML += /*html*/ `
-            <div class="user-selection-user">
+            <div class="user-selection-user" id="userSelectionItem${index}">
                 <img src="${availableUsers[i].img}">
                 <span>${availableUsers[i].first_name} ${availableUsers[i].last_name}</span>
             </div>
         `;
         showAssignedUserInSelection(index);
     }
-
 }
 
 
@@ -158,7 +156,15 @@ function renderAssignedUser(index) {
 
 
 function showAssignedUserInSelection(index) {
+    checkIfUserIsAssigned(index);
 
+}
+
+// 
+function checkIfUserIsAssigned(index) {
+    for (let i = 0; i < taskData[index].assignedTo.length; i++) {
+        
+    }
 }
 
 
@@ -271,7 +277,7 @@ function rendertaskCategoryOption() {
 
 
 function getDataFromTicketEdit(index) {
-    let title = document.getElementById(`ticketTitleText${index}`).value; 
+    let title = document.getElementById(`ticketTitleText${index}`).value;
     let category = document.getElementById(`ticketCategorySelect${index}`).value;
     let description = document.getElementById(`ticketDescription${index}`).value;
     let arr = [title, category, description];
@@ -281,11 +287,21 @@ function getDataFromTicketEdit(index) {
 
 
 function closeEveryTicketExceptLast(index) {
+    sortTicketsInBacklog();
+    for (let i = 0; i < sorted.length; i++) {
+        closeTicket(sorted[i]);
+    }
+    openTicket(index);
+}
+
+
+
+let sorted = [];
+function sortTicketsInBacklog() {
+    sorted = [];
     for (let i = 0; i < taskData.length; i++) {
-        if (i == index) {
-            openTicket(i);
-        } else {
-            closeTicket(i);
+        if (taskData[i].status == 'backlog') {
+            sorted.push(taskData[i].id);
         }
     }
 }
