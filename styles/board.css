@@ -207,24 +207,22 @@ h3 {
 
 
   @media (max-width:768px) {
+
+    .arrows img {
+      height: 32px;
+      width: 32px;
+    }
     
 
     h2 {
-        font-size: 18px;
         display: none;
     }
 
-    .category {
-        font-size: 12px;
-    }
+   
 
     .accordion {
         padding: 4px;
         text-align: center;
-    }
-
-    .date {
-        font-size: 10px;
     }
     
 
@@ -233,12 +231,9 @@ h3 {
         width: 16px;
       }
 
-      h3 {
-        font-size: 12px;
-      }
+    
 
       .description {
-        font-size: 10px;
         display: list-item;
         text-align: center;
       }
@@ -291,59 +286,4 @@ h3 {
 
   }
 
-  @media (max-width:460px) {
-    h2 {
-        font-size: 12px;
-    }
-
-    .task-card {
-        padding: 2px;
-    }
-
-    .category {
-        font-size: 8px;    
-    }
-
-    h3 {
-        font-size: 10px;
-    }
-
-    .description {
-        font-size: 8px;
-    }
-
-    .date {
-        font-size: 8px;
-    }
-
-  }
-
-  @media (max-width:350px) {
-    h2 {
-        font-size: 10px;
-    }
-
-    .task-card {
-        padding: 1px;
-    }
-
-    .category {
-        font-size: 6px;    
-    }
-
-    h3 {
-        font-size: 8px;
-    }
-
-    .description {
-        font-size: 6px;
-    }
-
-    .ticket-header {
-        flex-direction: column;
-    }
-    .date {
-        font-size: 6px;
-    }
-
-  }
+ 

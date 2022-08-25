@@ -13,7 +13,9 @@ let i;
 async function initBoard() {
     await init();
     await loadTickets();
+   
     showTickets();
+    showInResponsive();
     
     
 
@@ -56,12 +58,12 @@ function showTickets() {
  */
  function getTasks(currentStatus) {
     let tasks = allTasks.filter(t => t['status'] == currentStatus);
-    let content = document.getElementById(currentStatus + "Content");
-    content.innerHTML = ``;
+    mainContent = document.getElementById(currentStatus + "Content");
+    mainContent.innerHTML = ``;
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         let id = task['id'];
-        content.innerHTML += addHTML(task, id,);
+        mainContent.innerHTML += addHTML(task, id,);
         document.getElementById('ticket' + id).classList.add(checkPriority(task))
     }
 }
@@ -314,24 +316,17 @@ else {
 }
 
 
+
+
+
 function showInResponsive() {
     let currentCollumn = document.getElementById('responsiveHeadline');
     let currentValue = currentCollumn.value;
-    console.log("the current collumn is" + currentValue)
+    console.log("the current collumn is " + currentValue)
     getTasksInResponsive(currentValue);
 }
 
 
-
-//unction getTasksInResponsive(currentStatus) {
-//   let tasks = allTasks.filter(t => t['status'] == currentStatus);
-//   let content = document.getElementById(currentCollum);
-//   content.innerHTML = ``;
-//       let task = currentValue;
-//       let id = task['id'];
-//       content.innerHTML += addHTMLresponsive(task, id,);
-//       document.getElementById('ticket' + id).classList.add(checkPriority(task))
-//   }
 
     
 
@@ -343,15 +338,51 @@ function showInResponsive() {
  */
  function getTasksInResponsive(currentStatus) {
     let tasks = allTasks.filter(t => t['status'] == currentStatus);
-    let content = document.getElementById("responsiveMainContent");
-    content.innerHTML = ``;
+    responsiveContent = document.getElementById("responsiveMainContent");
+    responsiveContent.innerHTML = ``;
+    mainContent.innerHTML = "";
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         let id = task['id'];
-        content.innerHTML += addHTML(task, id,);
+        responsiveContent.innerHTML ="";
+        mainContent.innerHTML = "";
+        responsiveContent.innerHTML += addHTMLrespomsive(task, id,);
         document.getElementById('ticket' + id).classList.add(checkPriority(task))
-    }
+   }
+   readyForOpenTask();
 }
+
+function addHTMLrespomsive(currentArray, id,) {
+    return `
+            <div id="ticket${id}" class="task-card">
+                <button class="accordion">
+                    <div class="ticket-header">
+                        <h3>${currentArray["title"]}</h3>
+                        <img class="ticket-img" src="${checkAssignedTo(
+                          currentArray,
+                          id
+                        )}">
+                    </div>
+                    <span id="date${id}" class="date">${getDate(currentArray["dueTo"], id)}
+      </span>
+                </button>
+                <div class="panel">
+                <span class="description">${currentArray["description"]}</span>
+                
+                    <div>
+                    <img src="src/img/back-to-backlog.png" title="put it back to Backlog" class="put-to-backlog" onclick="backToBacklog(${id})"></img>
+                    <div class="arrows">
+                    <img src="src/img/arrow-icon-left.png" onclick="moveTicketLeft(${id})">
+                    <img class="click-delete-icon" src="src/img/delete.png" onclick="deleteByClick(${id})">
+                    <img src="src/img/arrow-icon-right.png" onclick="moveTicketRight(${id})">
+                </div>
+                    </div>
+                </div>
+                
+            </div>
+         `;
+}
+
 
 
 
