@@ -264,6 +264,7 @@ function moveTicketLeft(id) {
         }
     }
     showTickets();
+    showInResponsive();
     readyForOpenTask();
     saveData();
 }
@@ -282,7 +283,9 @@ function moveTicketRight(id) {
             { break; }
         }
     }
+    saveData();
     showTickets();
+    showInResponsive();
     readyForOpenTask();
     saveData();
 }
@@ -320,6 +323,7 @@ else {
 
 
 function showInResponsive() {
+    
     let currentCollumn = document.getElementById('responsiveHeadline');
     let currentValue = currentCollumn.value;
     console.log("the current collumn is " + currentValue)
@@ -339,17 +343,14 @@ function showInResponsive() {
  function getTasksInResponsive(currentStatus) {
     let tasks = allTasks.filter(t => t['status'] == currentStatus);
     responsiveContent = document.getElementById("responsiveMainContent");
-    responsiveContent.innerHTML = ``;
-    mainContent.innerHTML = "";
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         let id = task['id'];
-        responsiveContent.innerHTML ="";
+        responsiveContent.innerHTML = "";
         mainContent.innerHTML = "";
         responsiveContent.innerHTML += addHTMLrespomsive(task, id,);
         document.getElementById('ticket' + id).classList.add(checkPriority(task))
    }
-   readyForOpenTask();
 }
 
 function addHTMLrespomsive(currentArray, id,) {
