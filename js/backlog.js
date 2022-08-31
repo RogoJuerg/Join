@@ -107,10 +107,13 @@ function taskHtml(i) {
                             onmouseleave="textShow('choose an option', ${i})"
                             onclick="openEditMode(${i})">
                         <img id="editIcon${i}" class="send-to-board-img" src="./src/img/edit.png">
+                        
                     </div>
+                    <img src="src/img/x_white.png" alt="" onclick="closeTicket(${i})">
                 </div>
                 <div>
                     <span id="textOptions${i}">choose an option</span>
+                    
                 </div>
             </div>
             <div class="expanded-urgency-settings">
