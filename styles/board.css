@@ -194,9 +194,7 @@ h3 {
         width: calc(100vw / 4.4);
       }
 
-      .arrows img {
-        display: unset;
-      }
+  
 
       .delete-icon {
         margin-top: 50px;
@@ -209,6 +207,7 @@ h3 {
   @media (max-width:768px) {
 
     .arrows img {
+      display: unset;
       height: 32px;
       width: 32px;
     }

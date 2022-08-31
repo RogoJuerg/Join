@@ -13,9 +13,16 @@ let i;
 async function initBoard() {
     await init();
     await loadTickets();
-   
-    showTickets();
-    showInResponsive();
+    let screenSize = document.getElementById('body').clientWidth;
+    if (screenSize < 769) {
+        showInResponsive();
+    }
+    else {
+        showTickets();
+    }
+    readyForOpenTask();
+    
+    
     
     
 
@@ -231,7 +238,8 @@ async function deleteByClick(id) {
     await data.splice(id, 1)
     saveData();
     console.log(data);
-    showTickets();
+    //showTickets();
+    showInResponsive();
     readyForOpenTask();
     saveData();
 }
@@ -254,40 +262,74 @@ function backToBacklog(id) {
  * only in responsive, change status to the status of the left side
  * @param {string} id - ticket position in array
  */
+
 function moveTicketLeft(id) {
+
     let ticketStatus = data[id]["status"];
+
     for (let i = 0; i < taskStatus.length; i++) {
+
         let element = taskStatus[i];
+
         if (element == ticketStatus && i >= 1) {
+
             data[id]["status"] = taskStatus[i - 1]
+
             { break; }
+
         }
+
     }
-    showTickets();
-    showInResponsive();
-    readyForOpenTask();
     saveData();
+
+    showTickets();
+
+    showInResponsive();
+
+    readyForOpenTask();
+
+    saveData();
+
 }
 
 
+
+
+
 /**
- * only in responsive, change the status to the status of the right side
- * @param {string} id  - ticket position in array
- */
+
+* only in responsive, change the status to the status of the right side
+
+* @param {string} id  - ticket position in array
+
+*/
+
 function moveTicketRight(id) {
+
     let ticketStatus = data[id]["status"];
+
     for (let i = 0; i < taskStatus.length; i++) {
+
         let element = taskStatus[i];
+
         if (element == ticketStatus && i < taskStatus.length - 1) {
+
             data[id]["status"] = taskStatus[i + 1]
+
             { break; }
+
         }
+
     }
-    saveData();
+
     showTickets();
+
     showInResponsive();
+
     readyForOpenTask();
+
     saveData();
+
 }
 
 
@@ -323,12 +365,16 @@ else {
 
 
 function showInResponsive() {
-    
     let currentCollumn = document.getElementById('responsiveHeadline');
     let currentValue = currentCollumn.value;
     console.log("the current collumn is " + currentValue)
     getTasksInResponsive(currentValue);
 }
+    
+
+
+    
+    
 
 
 
@@ -341,21 +387,23 @@ function showInResponsive() {
  * @param {string} currentStatus - status for using the right tasks and div-IDs
  */
  function getTasksInResponsive(currentStatus) {
-    let tasks = allTasks.filter(t => t['status'] == currentStatus);
-    responsiveContent = document.getElementById("responsiveMainContent");
+    let tasks = data.filter(t => t['status'] == currentStatus);
+    responsiveContent = document.getElementById("responsiveMainContent");      
+    responsiveContent.innerHTML = "";
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         let id = task['id'];
-        responsiveContent.innerHTML = "";
-        mainContent.innerHTML = "";
+        
         responsiveContent.innerHTML += addHTMLrespomsive(task, id,);
-        document.getElementById('ticket' + id).classList.add(checkPriority(task))
+       // document.getElementById('resticket' + id).classList.add(checkPriority(task))
    }
 }
 
+
+
 function addHTMLrespomsive(currentArray, id,) {
     return `
-            <div id="ticket${id}" class="task-card">
+            <div id="resticket{id}" class="task-card">
                 <button class="accordion">
                     <div class="ticket-header">
                         <h3>${currentArray["title"]}</h3>
