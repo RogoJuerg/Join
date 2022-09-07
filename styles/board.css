@@ -156,6 +156,10 @@ h3 {
     -webkit-animation: flash 1.5s;
     animation: flash 1.5s;
   }
+
+  .description {
+    font-weight: lighter !important;
+  }
   @-webkit-keyframes flash {
     0% {
       opacity: .4;
@@ -236,6 +240,8 @@ h3 {
         display: list-item;
         text-align: center;
       }
+
+      
 
       .task-card {
         margin: 4px;

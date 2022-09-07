@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+       
+
+        function createUserIcon() {
+            userIcon.innerHTML = ``;
+            let firstName = document.getElementById('firstName').value;
+            let secondName = document.getElementById('secondName').value;
+            let firstLetter = firstName.charAt(0).toUpperCase();
+            let secondLetter = secondName.charAt(0).toUpperCase();
+            console.log("dies ergibt folgende Initalien", firstLetter, secondLetter)
+            changeIcon(firstLetter, secondLetter);
+        }
+
+        function changeIcon(firstLetter, secondLetter) {
+            let userIcon = document.getElementById('userIcon');
+            userIcon.classList.add(useColor())
+            userIcon.innerHTML = ``;
+            userIcon.innerHTML += `
+            <span class="first-letter">${firstLetter}</span>
+            <span class="second-letter">${secondLetter}</span>
+            `;
+        }
+
+        function useColor() {
+          let usedColor =  document.getElementById('iconColor').value;
+          return usedColor;
+        }
+
+    </script>
+</head>
+<style>
+.user-icon {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border: solid;
+    border-color: brown;
+    border-radius: 100%;
+    background-color: brown;
+}
+
+.black {
+    background-color: black;
+    border-color: black;
+    color: white;
+}
+
+.red {
+    background-color: red;
+    border-color: red; 
+    color: white;
+}
+
+.blue {
+    background-color: blue;
+    border-color: blue; 
+    color: white;
+}
+
+.green {
+    background-color: green;
+    border-color: green; 
+    color: white;
+}
+
+.yellow {
+    background-color: yellow;
+    border-color: yellow;
+    color:black
+}
+
+.purple {
+    background-color: purple;
+    border-color: purple;
+    color: white; 
+}
+
+.orange {
+    background-color: orange;
+    border-color: orange;
+    color: black;
+}
+</style>
+<body>
+    <input placeholder="first name" id="firstName">
+    <input placeholder="last name" id="secondName">
+    <select name="selectColor" id="iconColor">
+        <option value="black">black</option>
+        <option value="red">red</option>
+        <option value="blue">blue</option>
+        <option value="green">green</option>
+        <option value="yellow">yellow</option>
+        <option value="purple">purple</option>
+        <option value="orange">orange</option>
+    </select>
+
+    <button id="createIconButton" onclick="createUserIcon()">get an icon</button>
+    <div id="userIcon" class="user-icon">
+        <span class="first-letter"></span>
+        <span class="second-letter"></span>
+    </div>
+    
+</body>
+</html>

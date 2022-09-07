@@ -66,6 +66,10 @@ function generateTask() {
 }
 
 
+
+
+
+
 function taskHtml(i) {
     return /*html*/ `
     <div class="task-ticket-container">
@@ -109,7 +113,7 @@ function taskHtml(i) {
                         <img id="editIcon${i}" class="send-to-board-img" src="./src/img/edit.png">
                         
                     </div>
-                    <img src="src/img/x_white.png" alt="" onclick="closeTicket(${i})">
+                    <img id="closeTicketButton" src="src/img/x-mark-48.png" title="close this Ticket" onclick="closeTicket(${i})">
                 </div>
                 <div>
                     <span id="textOptions${i}">choose an option</span>

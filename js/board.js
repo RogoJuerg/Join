@@ -395,7 +395,9 @@ function showInResponsive() {
         let id = task['id'];
         
         responsiveContent.innerHTML += addHTMLrespomsive(task, id,);
-       // document.getElementById('resticket' + id).classList.add(checkPriority(task))
+        
+        let ticket = document.getElementById('resticket' + id);
+        ticket.classList.add(checkPriority(task))
    }
 }
 
@@ -403,7 +405,7 @@ function showInResponsive() {
 
 function addHTMLrespomsive(currentArray, id,) {
     return `
-            <div id="resticket{id}" class="task-card">
+            <div id="resticket${id}" class="task-card">
                 <button class="accordion">
                     <div class="ticket-header">
                         <h3>${currentArray["title"]}</h3>
