@@ -3,12 +3,28 @@ let user = [];
 async function initIndex() {
     await init();
     await loadUsers();
+    await loadEvents();
 }
 
 
 async function loadUsers() {
     user = users;
 }
+
+async function loadEvents() {
+    var input = document.getElementById("password");
+    input.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("logInButton").click();
+        }
+    });
+}
+
+
+
+
+
 
 
 function checkForm() {
