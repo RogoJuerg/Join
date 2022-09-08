@@ -160,6 +160,12 @@ h3 {
   .description {
     font-weight: lighter !important;
   }
+
+  .board-icons {
+    height: 24px !important;
+    width: 24px !important;
+    font-size: 12px;
+  }
   @-webkit-keyframes flash {
     0% {
       opacity: .4;
@@ -209,6 +215,10 @@ h3 {
 
 
   @media (max-width:768px) {
+
+    .board-main-content {
+      height: 100%;
+    }
 
     .delete-icon {
       display: none;

@@ -25,6 +25,7 @@ async function initBoard() {
     
     
     
+    
 
 
 }
@@ -71,7 +72,8 @@ function showTickets() {
         let task = tasks[i];
         let id = task['id'];
         mainContent.innerHTML += addHTML(task, id,);
-        document.getElementById('ticket' + id).classList.add(checkPriority(task))
+        document.getElementById('ticket' + id).classList.add(checkPriority(task));
+        
     }
 }
 
@@ -105,16 +107,15 @@ function addHTML(currentArray, id) {
             <div id="ticket${id}" draggable="true" ondragstart="startDragging(${id})" class="task-card">
                 <button class="accordion">
                 <div>
+                   ${getAllAssignedUser(currentArray)}
+                    
                     <span class="category">${currentArray["category"]}</span>
 
 
                 </div>
                     <div class="ticket-header">
                         <h3>${currentArray["title"]}</h3>
-                        <img class="ticket-img" src="${checkAssignedTo(
-                          currentArray,
-                          id
-                        )}">
+                        
                     </div>
                     <span id="date${id}" class="date">${getDate(
       currentArray["dueTo"], id)}
@@ -409,10 +410,7 @@ function addHTMLrespomsive(currentArray, id,) {
                 <button class="accordion">
                     <div class="ticket-header">
                         <h3>${currentArray["title"]}</h3>
-                        <img class="ticket-img" src="${checkAssignedTo(
-                          currentArray,
-                          id
-                        )}">
+                        <img class="ticket-img" src="${checkAssignedTo(currentArray, id)}">
                     </div>
                     <span id="date${id}" class="date">${getDate(currentArray["dueTo"], id)}
       </span>
@@ -434,7 +432,33 @@ function addHTMLrespomsive(currentArray, id,) {
          `;
 }
 
+function iconFit() {
+    let icons = document.getElementsByClassName("user-icon")
+    
+    for (let i = 0; i < icons.length; i++) {
+        let icon = icons[i];
+        icon.classList.add('board-icons');
+        
+    }
+}
 
+
+function getAllAssignedUser(currentArray) {
+    allUsers = currentArray['assignedTo'];
+    for (let i = 0; i < allUsers.length; i++) {
+        let thatUser = allUsers[i];
+        console.log(thatUser);
+        return createUserIcon(thatUser);
+        
+    }
+    
+    
+        
+    
+    
+ 
+    
+}
 
 
 
