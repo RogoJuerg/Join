@@ -73,6 +73,7 @@ async function checkFormSignUp() {
     let lastName = document.getElementById('signUpLastName');
     let email = document.getElementById('signUpEmail');
     let password = document.getElementById('signUpPassword');
+    let color = document.getElementById('colorInput').value;
     let user = [];
 
     if (firstName.value && lastName.value && email.value && password.value) {
@@ -82,8 +83,8 @@ async function checkFormSignUp() {
             "first_name": firstName.value,
             "last_name": lastName.value,
             "email": email.value,
-            "img": `./src/img/user/img_01.png`,
-            "password": password.value
+            "password": password.value,
+            "color": color
         };
         console.log(user);
         users.push(user);
@@ -123,17 +124,25 @@ async function checkFormSignUp() {
     }
 }
 
+function setColorPreview() {
+    let displayColor = document.getElementById('colorPreview');
+    let color =  document.getElementById('colorInput').value;
+    displayColor.style.backgroundColor = color;
+}
+
 
 function resetSignUpFields() {
     let firstName = document.getElementById('signUpFirstName');
     let lastName = document.getElementById('signUpLastName');
     let email = document.getElementById('signUpEmail');
     let password = document.getElementById('signUpPassword');
+    let color = document.getElementById('colorInput');
 
     firstName.value = "";
     lastName.value = "";
     email.value = "";
     password.value = "";
+    color.value = "";
 
     firstName.classList.remove('input-green');
     lastName.classList.remove('input-green');

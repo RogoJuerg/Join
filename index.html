@@ -68,6 +68,23 @@
               <span>Password</span>
               <input id="signUpPassword" class="input-neutral" type="password">
             </div>
+
+            <div class="sign-up-form-cont">
+              <span>Color</span>
+              <div id="colorPreview" class="color-preview"></div>
+              <select id="colorInput" class="input-neutral" onchange="setColorPreview()">
+                <option value="black">black</option>
+        <option value="red">red</option>
+        <option value="blue">blue</option>
+        <option value="green">green</option>
+        <option value="yellow">yellow</option>
+        <option value="purple">purple</option>
+        <option value="orange">orange</option>
+              </select></div>
+            </div>
+
+
+
             <div class="sign-up-buttons">
               <button type="button" onclick="checkFormSignUp()">Sign-up</button>
               <button type="button" onclick="openSignUpPopup(), resetSignUpFields()">Cancel</button>

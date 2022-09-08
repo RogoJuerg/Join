@@ -232,6 +232,13 @@ main {
     }
 }
 
+.color-preview {
+    height: 16px;
+    width: 70px;
+    border-radius: 6px;
+    background-color: black;
+}
+
 .popup-container {
     display: flex;
     position: absolute;

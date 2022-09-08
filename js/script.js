@@ -93,3 +93,27 @@ function showNavbar() {
 function closeNavbar() {
     document.getElementById('menubar').classList.add('hide-mobile');
 }
+
+//function generateUserIcon() {
+//    
+//}
+//
+//function createUserIcon() {
+//    userIcon.innerHTML = ``;
+//    let firstName = document.getElementById('firstName').value;
+//    let secondName = document.getElementById('secondName').value;
+//    let firstLetter = firstName.charAt(0).toUpperCase();
+//    let secondLetter = secondName.charAt(0).toUpperCase();
+//    console.log("dies ergibt folgende Initalien", firstLetter, secondLetter)
+//    changeIcon(firstLetter, secondLetter);
+//}
+//
+//function changeIcon(firstLetter, secondLetter) {
+//    let userIcon = document.getElementById('userIcon');
+//    userIcon.innerHTML = ``;
+//    userIcon.classList.add(useColor())
+//    userIcon.innerHTML += `
+//    <span class="first-letter">${firstLetter}</span>
+//    <span class="second-letter">${secondLetter}</span>
+//    `;
+//}

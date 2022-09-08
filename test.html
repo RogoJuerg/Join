@@ -20,8 +20,8 @@
 
         function changeIcon(firstLetter, secondLetter) {
             let userIcon = document.getElementById('userIcon');
-            userIcon.classList.add(useColor())
             userIcon.innerHTML = ``;
+            userIcon.classList.add(useColor())
             userIcon.innerHTML += `
             <span class="first-letter">${firstLetter}</span>
             <span class="second-letter">${secondLetter}</span>
