@@ -210,6 +210,10 @@ h3 {
 
   @media (max-width:768px) {
 
+    .delete-icon {
+      display: none;
+    }
+
     .arrows img {
       display: unset;
       height: 32px;

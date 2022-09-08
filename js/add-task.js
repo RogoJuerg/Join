@@ -37,14 +37,19 @@ async function saveTickets() {
 function generateUserSelection() {
     document.getElementById('userSelection').innerHTML = ``;
     for (let i = 0; i < user.length; i++) {
+
+
         document.getElementById('userSelection').innerHTML += /*html*/ `
             <div onclick="assignUser(${user[i].id})" id="userSelection${[i]}" class="user-selection-user">
-                <img class="assigned-to-user-img-user" src="${user[i].img}">
+                ${createUserIcon(user[i])}
                 <span>${user[i].first_name}</span>
                 <span>${user[i].last_name}</span>
             </div>
         `;
-        if (assignedUser.includes(user[i])) {
+
+    setColor(user[i]);
+        
+    if (assignedUser.includes(user[i])) {
             document.getElementById(`userSelection${i}`).classList.add('user-selection-user-selected');
         }
 
@@ -196,9 +201,8 @@ function generateAssignedUser() {
             document.getElementById('assignedUser' + i).innerHTML += createUserIcon(currentUser);
             document.getElementById('assignedUser' + i).innerHTML += `<span>${username}</span>`;
             setColor(currentUser);
-            let userIcon = document.getElementById('userIcon' + currentUser.id);
-            userIcon.classList.add(currentUser.color);
-           
+
+            
         }
     }
 }

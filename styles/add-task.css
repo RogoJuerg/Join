@@ -347,6 +347,8 @@
     border: 2px solid #F4F3FB;
 }
 
+
+
 @keyframes popup {
     0% {
         transform: scale(0%);
@@ -486,6 +488,8 @@
 .assigned-user-container {
     display: flex;
 }
+
+.assigned-user-container
 
 .assigned-user {
     display: flex;
