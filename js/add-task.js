@@ -188,12 +188,17 @@ function generateAssignedUser() {
     if (assignedUser) {
         for (let i = 0; i < assignedUser.length; i++) {
             username = assignedUser[i].first_name + "<br>" + assignedUser[i].last_name;
+            let currentUser = assignedUser[i];
             assign.innerHTML += `
-            <div class="assigned-user">
-            <img src="${assignedUser[i].img}">
-            <span>${username}</span>
+            <div id="assignedUser${i}" class="assigned-user">
             </div> 
-        `;
+            `;
+            document.getElementById('assignedUser' + i).innerHTML += createUserIcon(currentUser);
+            document.getElementById('assignedUser' + i).innerHTML += `<span>${username}</span>`;
+            setColor(currentUser);
+            let userIcon = document.getElementById('userIcon' + currentUser.id);
+            userIcon.classList.add(currentUser.color);
+           
         }
     }
 }

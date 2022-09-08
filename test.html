@@ -8,7 +8,7 @@
     <script>
        
 
-        function createUserIcon() {
+        function createUserIcon(user) {
             userIcon.innerHTML = ``;
             let firstName = document.getElementById('firstName').value;
             let secondName = document.getElementById('secondName').value;
@@ -21,7 +21,7 @@
         function changeIcon(firstLetter, secondLetter) {
             let userIcon = document.getElementById('userIcon');
             userIcon.innerHTML = ``;
-            userIcon.classList.add(useColor())
+            userIcon.classList.add(useColor());
             userIcon.innerHTML += `
             <span class="first-letter">${firstLetter}</span>
             <span class="second-letter">${secondLetter}</span>
@@ -112,3 +112,6 @@
     
 </body>
 </html>
+
+
+

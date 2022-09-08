@@ -153,6 +153,67 @@ nav * {
     display: none;
 }
 
+.user-icon {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border: solid;
+    border-color: black;
+    border-radius: 100%;
+    background-color: black;
+}
+
+.user-icon.small-icon {
+    width: 32px;
+    height: 32px;
+    margin: 4px;
+}
+
+.black {
+    background-color: black;
+    border-color: black;
+    color: white;
+}
+
+.red {
+    background-color: red;
+    border-color: red; 
+    color: white;
+}
+
+.blue {
+    background-color: blue;
+    border-color: blue; 
+    color: white;
+}
+
+.green {
+    background-color: green;
+    border-color: green; 
+    color: white;
+}
+
+.yellow {
+    background-color: yellow;
+    border-color: yellow;
+    color:black
+}
+
+.purple {
+    background-color: purple;
+    border-color: purple;
+    color: white; 
+}
+
+.orange {
+    background-color: orange;
+    border-color: orange;
+    color: black;
+}
+
 @media (max-width:1111px) {
     .hide-mobile {
         display: none!important;

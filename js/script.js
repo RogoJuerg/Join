@@ -94,26 +94,46 @@ function closeNavbar() {
     document.getElementById('menubar').classList.add('hide-mobile');
 }
 
-//function generateUserIcon() {
-//    
-//}
-//
-//function createUserIcon() {
-//    userIcon.innerHTML = ``;
-//    let firstName = document.getElementById('firstName').value;
-//    let secondName = document.getElementById('secondName').value;
-//    let firstLetter = firstName.charAt(0).toUpperCase();
-//    let secondLetter = secondName.charAt(0).toUpperCase();
-//    console.log("dies ergibt folgende Initalien", firstLetter, secondLetter)
-//    changeIcon(firstLetter, secondLetter);
-//}
-//
-//function changeIcon(firstLetter, secondLetter) {
-//    let userIcon = document.getElementById('userIcon');
-//    userIcon.innerHTML = ``;
-//    userIcon.classList.add(useColor())
-//    userIcon.innerHTML += `
-//    <span class="first-letter">${firstLetter}</span>
-//    <span class="second-letter">${secondLetter}</span>
-//    `;
-//}
+
+
+
+/**
+ * 
+ * 
+ * 
+ * @param {Array} currentUser - the userarray with all important informations 
+ * @returns the usericon as HTML
+ * get the first letters of the first and lastname and the color to create a usericon
+ */
+function createUserIcon(currentUser) {
+    let firstName = currentUser.first_name;
+    let secondName = currentUser.last_name;
+    let firstLetter = firstName.charAt(0).toUpperCase();
+    let secondLetter = secondName.charAt(0).toUpperCase();
+    return `
+    <div class="user-icon small-icon" id="userIcon${currentUser.id}">
+        <span class="first-letter">${firstLetter}</span>
+        <span class="second-letter">${secondLetter}</span>
+    </div>
+        `;    
+}
+
+function changeIcon(firstLetter, secondLetter) {
+    let userIcon = document.getElementById('userIcon');
+    userIcon.innerHTML = ``;
+    userIcon.classList.add(useColor())
+    userIcon.innerHTML += `
+    <span class="first-letter">${firstLetter}</span>
+    <span class="second-letter">${secondLetter}</span>
+    `;
+}
+
+function useColor() {
+  let usedColor =  document.getElementById('iconColor').value;
+  return usedColor;
+}
+
+function setColor(currentUser) {
+    let userIcon = document.getElementById('userIcon' + currentUser.id);
+    userIcon.classList.add(currentUser.color);
+    }
