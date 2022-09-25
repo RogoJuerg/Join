@@ -47,7 +47,7 @@ function generateUserSelection() {
             </div>
         `;
 
-    setColor(user[i]);
+    //setColor(user[i]);
         
     if (assignedUser.includes(user[i])) {
             document.getElementById(`userSelection${i}`).classList.add('user-selection-user-selected');
@@ -200,7 +200,7 @@ function generateAssignedUser() {
             `;
             document.getElementById('assignedUser' + i).innerHTML += createUserIcon(currentUser);
             document.getElementById('assignedUser' + i).innerHTML += `<span>${username}</span>`;
-            setColor(currentUser);
+            //setColor(currentUser);
 
             
         }

@@ -154,7 +154,7 @@
     }
 }
 #closeTicketButton:hover {
-    background-color: #1E3190);
+    background-color: #1E3190;
     transition: all 125ms ease-in-out;
     color: black;
     cursor: pointer;

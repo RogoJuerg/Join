@@ -111,7 +111,7 @@ function createUserIcon(currentUser) {
     let firstLetter = firstName.charAt(0).toUpperCase();
     let secondLetter = secondName.charAt(0).toUpperCase();
     return `
-    <div class="user-icon small-icon" id="userIcon${currentUser.id}">
+    <div class="user-icon small-icon ${currentUser['color']}" id="userIcon${currentUser.id}">
         <span class="first-letter">${firstLetter}</span>
         <span class="second-letter">${secondLetter}</span>
     </div>
@@ -133,7 +133,16 @@ function useColor() {
   return usedColor;
 }
 
-function setColor(currentUser) {
-    let userIcon = document.getElementById('userIcon' + currentUser.id);
-    userIcon.classList.add(currentUser.color);
-    }
+//function setColor() {
+//    let allIcons = document.getElementsByClassName('user-icon');
+//    for (let i = 0; i < allIcons.length; i++) {
+//        let icon = allIcons[i];
+//        icon.classList.add()
+//        console.log(icon);
+//    }
+//    
+//
+//}
+
+    
+    

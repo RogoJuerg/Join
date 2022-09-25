@@ -21,6 +21,7 @@ async function initBoard() {
         showTickets();
     }
     readyForOpenTask();
+    //setColor();
     
     
     
@@ -66,12 +67,15 @@ function showTickets() {
  */
  function getTasks(currentStatus) {
     let tasks = allTasks.filter(t => t['status'] == currentStatus);
+   
     mainContent = document.getElementById(currentStatus + "Content");
     mainContent.innerHTML = ``;
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         let id = task['id'];
+        let currentUsers = task['assignedTo'];
         mainContent.innerHTML += addHTML(task, id,);
+        addIconsToBoard(task, id);
         document.getElementById('ticket' + id).classList.add(checkPriority(task));
         
     }
@@ -107,8 +111,7 @@ function addHTML(currentArray, id) {
             <div id="ticket${id}" draggable="true" ondragstart="startDragging(${id})" class="task-card">
                 <button class="accordion">
                 <div>
-                   ${getAllAssignedUser(currentArray)}
-                    
+                   
                     <span class="category">${currentArray["category"]}</span>
 
 
@@ -131,8 +134,11 @@ function addHTML(currentArray, id) {
                     <img class="click-delete-icon" src="src/img/delete.png" onclick="deleteByClick(${id})">
                     <img src="src/img/arrow-icon-right.png" onclick="moveTicketRight(${id})">
                 </div>
+                <div id="iconArea${id}" class="iconAreaBoard">
+                </div>
                     </div>
                 </div>
+                
                 
             </div>
          `;
@@ -394,11 +400,10 @@ function showInResponsive() {
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         let id = task['id'];
-        
         responsiveContent.innerHTML += addHTMLrespomsive(task, id,);
-        
         let ticket = document.getElementById('resticket' + id);
-        ticket.classList.add(checkPriority(task))
+        ticket.classList.add(checkPriority(task));
+        addIconsToBoardInResponsive(task, id);
    }
 }
 
@@ -410,12 +415,14 @@ function addHTMLrespomsive(currentArray, id,) {
                 <button class="accordion">
                     <div class="ticket-header">
                         <h3>${currentArray["title"]}</h3>
-                        <img class="ticket-img" src="${checkAssignedTo(currentArray, id)}">
+                        
                     </div>
                     <span id="date${id}" class="date">${getDate(currentArray["dueTo"], id)}
       </span>
                 </button>
                 <div class="panel">
+                <div id="iconAreaResponsive${id}" class="iconAreaBoard">
+                </div>
                 <span class="description">${currentArray["description"]}</span>
                 
                     <div>
@@ -444,21 +451,45 @@ function iconFit() {
 
 
 function getAllAssignedUser(currentArray) {
-    allUsers = currentArray['assignedTo'];
+  allUsers = currentArray['assignedTo'];
+  for (let i = 0; i < allUsers.length; i++) {
+    let thatUser = allUsers[i];
+    return createUserIcon(thatUser);
+  }
+}
+
+  function addIconsToBoard(task, id) {
+    let target = document.getElementById('iconArea' + id);
+    let allUsers = task['assignedTo'];
     for (let i = 0; i < allUsers.length; i++) {
         let thatUser = allUsers[i];
-        console.log(thatUser);
-        return createUserIcon(thatUser);
+        target.innerHTML += createUserIcon(thatUser);
+    }
         
     }
-    
+
+
+    function addIconsToBoardInResponsive(task, id) {
+        let target = document.getElementById('iconAreaResponsive' + id);
+        let allUsers = task['assignedTo'];
+        for (let i = 0; i < allUsers.length; i++) {
+            let thatUser = allUsers[i];
+            target.innerHTML += createUserIcon(thatUser);
+        }
+    }
+  
+  
+      
+      
+  
+  
     
         
     
     
  
     
-}
+
 
 
 
