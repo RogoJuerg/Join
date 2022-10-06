@@ -63,30 +63,13 @@ h3 {
     
 }
 
-.low-task {
-    border-left: 5px solid green !important;
-}
 
-.medium-task {
-    border-left: 5px solid orange !important;
-}
-
-.high-task {
-    border-left: 5px solid red !important;
-}
 
 .category {
     color: lightgray;
     padding-left: 4px;
 }
 
-.undraggable {
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-}
 
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {

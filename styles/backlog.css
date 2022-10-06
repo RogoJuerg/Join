@@ -118,6 +118,7 @@
     margin: 32px;
     transform: translateY(48px);
     animation: expandDetails 250ms ease-in-out;
+    z-index: 100;
 }
 
 .ticket-details-expanded::-webkit-scrollbar {
@@ -192,7 +193,7 @@
     top: 54px;
     width: 100%;
     background-color: #F4F3FB;
-    height: 112px;
+    height: 150px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     animation: ticketExpanded 225ms ease-in-out;
@@ -229,7 +230,13 @@
     position: relative;
 }
 
-.user-selection-container {
+.iconAreaBacklog {
+    display: flex;
+    overflow: auto;
+    max-width: 140px;
+}
+
+/*().user-selection-container {
     z-index: 999;
     display: flex;
     position: absolute;
@@ -264,16 +271,17 @@
     margin-right: 4px;
 }
 
-/* Handle */
+
 .user-selection-container::-webkit-scrollbar-thumb {
     border-radius: 50px;
     background-color: #6b718c;
 }
 
-/* Handle on hover */
+
 .user-selection-container::-webkit-scrollbar-thumb:hover {
     background-color: #1E3190;
-}
+} */
+
 
 .user-selection-user {
     display: flex;

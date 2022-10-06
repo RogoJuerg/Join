@@ -16,8 +16,12 @@ function setData() {
 
 
 function openTicket(index) {
+    let allTasks = data;
+    let task = allTasks[index]
+    let ticketExpanded = document.getElementById(`ticketExpanded${index}`);
     document.getElementById(`ticketButton${index}`).classList.add('d-none');
-    document.getElementById(`ticketExpanded${index}`).classList.remove('d-none');
+    ticketExpanded.classList.remove('d-none');
+    ticketExpanded.classList.add(checkPriority(task));
     expandTicketDetails(index);
 }
 
@@ -32,6 +36,9 @@ function closeTicket(index) {
 
 function expandTicketDetails(index) {
     let ticketDetails = document.getElementById(`ticketDetails${index}`);
+    let ticketTitle = document.getElementById(`ticketTitle${index}`);
+    ticketTitle.classList.toggle('ticket-details');
+    ticketTitle.classList.toggle('ticket-details-expanded');
     ticketDetails.classList.toggle('ticket-details');
     ticketDetails.classList.toggle('ticket-details-expanded');
     ticketDetails.style.zIndex = 11;
@@ -41,8 +48,11 @@ function expandTicketDetails(index) {
 
 function closeTicketDetails(index) {
     let ticketDetails = document.getElementById(`ticketDetails${index}`);
+    let ticketTitle = document.getElementById(`ticketTitle${index}`);
     ticketDetails.classList.add('ticket-details');
     ticketDetails.classList.remove('ticket-details-expanded');
+    ticketTitle.classList.add('ticket-details');
+    ticketTitle.classList.remove('ticket-details-expanded');
     ticketDetails.style.zIndex = 9;
     document.getElementById(`ticketExpanded${index}`).style.zIndex = 8;
 }
@@ -57,10 +67,13 @@ function textShow(content, index) {
 function generateTask() {
     document.getElementById('taskContent').innerHTML = ``;
     for (let i = 0; i < taskData.length; i++) {
+        let task = taskData[i]
         if (taskData[i].status == "backlog") {
             document.getElementById('taskContent').innerHTML += taskHtml(i);
+            document.getElementById('ticketButton' + i).classList.add(checkPriority(task));
             renderAssignedUser(i);
-            renderUserSelection(i);
+            addIconsToBacklog(task, i);
+            //renderUserSelection(i);
         }
     }
 }
@@ -72,14 +85,14 @@ function generateTask() {
 
 function taskHtml(i) {
     return /*html*/ `
-    <div class="task-ticket-container">
+    <div ondblclick="closeTicket(${i})" class="task-ticket-container undraggable">
     <div class="task-ticket" id="taskTicket">
         <div onclick="closeEveryTicketExceptLast(${i})" id="ticketButton${i}" class="ticket-button">
             <span>EXPAND TO EDIT</span>
         </div>
         <div class="ticket-user-img" id="assignedUser${i}">
         </div>
-        <div id="ticketTitle${i}"  class="ticket-title">
+        <div id="ticketTitle${i}"  class="ticket-details ticket-title">
             <span>${taskData[i].title}</span>
         </div>
         <div id="ticketCategory${i}" class="ticket-category">
@@ -98,25 +111,25 @@ function taskHtml(i) {
             <div class="ticket-options-container">
                 <div class="ticket-options">
                     <div class="delete-img-cont" onmouseover="textShow('delete Task', ${i})" 
-                            onmouseleave="textShow('choose an option', ${i})"
+                            onmouseleave="textShow('choose an option or doubleclick to close details or doubleclick to close expansion', ${i})"
                             onclick="deleteTask(${i})">
                         <img class="delete-img" src="./src/img/delete.png">
                     </div>
                     <div class="send-to-board-img-cont" onmouseover="textShow('move to board', ${i})" 
-                            onmouseleave="textShow('choose an option', ${i})"
+                            onmouseleave="textShow('choose an option or doubleclick to close expansion', ${i})"
                             onclick="moveTaskToBoard(${i})">
                         <img class="send-to-board-img" src="./src/img/send_to_board.png">
                     </div>
                     <div id="editIconDiv${i}" class="send-to-board-img-cont" onmouseover="textShow('edit task', ${i})" 
-                            onmouseleave="textShow('choose an option', ${i})"
+                            onmouseleave="textShow('choose an option or doubleclick to close expansion', ${i})"
                             onclick="openEditMode(${i})">
                         <img id="editIcon${i}" class="send-to-board-img" src="./src/img/edit.png">
                         
                     </div>
-                    <img id="closeTicketButton" src="src/img/x-mark-48.png" title="close this Ticket" onclick="closeTicket(${i})">
+                    
                 </div>
                 <div>
-                    <span id="textOptions${i}">choose an option</span>
+                    <span id="textOptions${i}">choose an option or doubleclick to close expansion</span>
                     
                 </div>
             </div>
@@ -130,18 +143,18 @@ function taskHtml(i) {
 }
 
 
-function renderUserSelection(index) {
-    document.getElementById(`userSelection${index}`).innerHTML = ``;
-    for (let i = 0; i < availableUsers.length; i++) {
-        document.getElementById(`userSelection${index}`).innerHTML += /*html*/ `
-            <div class="user-selection-user" id="userSelectionItem${index}">
-                <img src="${availableUsers[i].img}">
-                <span>${availableUsers[i].first_name} ${availableUsers[i].last_name}</span>
-            </div>
-        `;
-        showAssignedUserInSelection(index);
-    }
-}
+//function renderUserSelection(index) {
+//    document.getElementById(`userSelection${index}`).innerHTML = ``;
+//    for (let i = 0; i < availableUsers.length; i++) {
+//        document.getElementById(`userSelection${index}`).innerHTML += /*html*/ `
+//            <div class="user-selection-user" id="userSelectionItem${index}">
+//                <img src="${availableUsers[i].img}">
+//                <span>${availableUsers[i].first_name} ${availableUsers[i].last_name}</span>
+//            </div>
+//        `;
+//        showAssignedUserInSelection(index);
+//    }
+//}
 
 
 function renderAssignedUser(index) {
@@ -152,7 +165,9 @@ function renderAssignedUser(index) {
         for (let i = 0; i < taskData[index].assignedTo.length; i++) {
             if (taskData[index].assignedTo) {
                 document.getElementById(`assignedUser${index}`).innerHTML += /*html*/ `
-                    <img style="left: ${left}px; z-index: ${zIndex};" src="${taskData[index].assignedTo[i].img}">
+                    <!--<img style="left: ${left}px; z-index: ${zIndex};" src="${taskData[index].assignedTo[i].img}">-->
+                    <div id="iconArea${index}" class="iconAreaBacklog">
+                    </div>
             `;
                 zIndex--;
                 left += 32;
@@ -160,6 +175,18 @@ function renderAssignedUser(index) {
         }
     }
 }
+
+
+
+function addIconsToBacklog(task, id) {
+    let target = document.getElementById('iconArea' + id);
+    let allUsers = task['assignedTo'];
+    for (let i = 0; i < allUsers.length; i++) {
+        let thatUser = allUsers[i];
+        target.innerHTML += createUserIcon(thatUser);
+    }
+        
+    }
 
 
 function showAssignedUserInSelection(index) {

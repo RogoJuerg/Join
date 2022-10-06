@@ -81,22 +81,7 @@ function showTickets() {
     }
 }
 
-/**
- * check the urgency for choosing the border-color
- * 
- */
-function checkPriority(currentArray) {
-    priority = currentArray['urgency'];
-    if (priority == 'low') {
-        return 'low-task';
-    }
-    if (priority == 'medium') {
-        return 'medium-task';
-    }
-    if (priority == 'high') {
-        return 'high-task';
-    }
-}
+
 
 
 /**

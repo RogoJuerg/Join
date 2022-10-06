@@ -215,6 +215,29 @@ nav * {
     color: black;
 }
 
+.undraggable {
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.low-task {
+    border-bottom: 5px solid green !important;
+}
+
+.medium-task {
+    border-bottom: 5px solid orange !important;
+}
+
+.high-task {
+    border-bottom: 5px solid red !important;
+}
+
+
+
+
 @media (max-width:1111px) {
     .hide-mobile {
         display: none!important;
