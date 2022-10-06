@@ -104,8 +104,7 @@ function taskHtml(i) {
         <div id="ticketExpanded${i}" class="ticket-expanded d-none">
             <div class="expanded-user-settings">
                 <div class="user-selection-container">
-                    <div id="userSelection${i}" class="user-selection-content">
-                    </div>
+                    
                 </div>
             </div>
             <div class="ticket-options-container">
@@ -166,7 +165,7 @@ function renderAssignedUser(index) {
             if (taskData[index].assignedTo) {
                 document.getElementById(`assignedUser${index}`).innerHTML += /*html*/ `
                     <!--<img style="left: ${left}px; z-index: ${zIndex};" src="${taskData[index].assignedTo[i].img}">-->
-                    <div id="iconArea${index}" class="iconAreaBacklog">
+                    <div id="iconArea${index}" class="iconAreaBacklog new-scrollbar">
                     </div>
             `;
                 zIndex--;

@@ -1,3 +1,8 @@
+html {
+    overflow-x: hidden;
+}
+
+
 .backlog-container {
     margin: 32px 16px 32px 16px;
     width: 100%;
@@ -193,7 +198,7 @@
     top: 54px;
     width: 100%;
     background-color: #F4F3FB;
-    height: 150px;
+    height: 180px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     animation: ticketExpanded 225ms ease-in-out;
@@ -234,6 +239,9 @@
     display: flex;
     overflow: auto;
     max-width: 140px;
+    margin-bottom: 5px;
+    border: solid 0px;
+    border-radius: 4px;
 }
 
 /*().user-selection-container {
@@ -384,9 +392,10 @@
 
 .ticket-options-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 16px;
 }
 
 .text-anim {
@@ -424,6 +433,7 @@
     border-radius: 3px;
     padding: 8px;
     width: 100%;
+    max-height: 20px;
 }
 
 .ticket-title-input {

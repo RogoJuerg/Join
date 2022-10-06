@@ -235,6 +235,29 @@ nav * {
     border-bottom: 5px solid red !important;
 }
 
+.new-scrollbar::-webkit-scrollbar {
+    display: block;
+    width: 3px;
+    height: 3px;
+}
+
+.new-scrollbar::-webkit-scrollbar-track {
+    border-radius: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Handle */
+.new-scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background-color: #6b718c;
+}
+
+/* Handle on hover */
+.new-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #1E3190;
+}
+
 
 
 
