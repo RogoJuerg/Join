@@ -92,6 +92,9 @@ function taskHtml(i) {
         </div>
         <div class="ticket-user-img" id="assignedUser${i}">
         </div>
+        <div class="d-none" id="userSelection${i}">
+        
+</div>
         <div id="ticketTitle${i}"  class="ticket-details ticket-title">
             <span>${taskData[i].title}</span>
         </div>
@@ -262,12 +265,43 @@ function revertTagCategory(index) {
 
 
 function openEditMode(index) {
+    //addUserSelection(index);
     replaceTagDescription(index);
     replaceTagTitle(index);
     replaceTagCategory(index);
     changeEditIconToSave(index);
 }
 
+function addUserSelection(index) {
+    let userIcons = document.getElementById('assignedUser' + index);
+    let userSelection = document.getElementById('userSelection' + index)
+    userIcons.classList.add("d-none");
+    userSelection.classList.remove("d-none");
+    userSelection.innerHTML = Selection(index);
+    addAvailableUsersInSelection(index);
+}
+
+function addAvailableUsersInSelection(index) {
+    let target = document.getElementById('selection' + index);
+    for (let i = 0; i < users.length; i++) {
+        let availableUser = users[i];
+        let fullName = availableUser['first_name'] + availableUser['last_name']
+        target.innerHTML += `
+        <option>${fullName}</option>
+        
+        `
+        
+    }
+
+}
+
+function Selection(index) {
+    return `
+    <select id="selection${index}" multiple>
+    
+    </select>
+    `;
+}
 
 function closeEditMode(index) {
     revertTagDescription(index);
@@ -313,8 +347,11 @@ function getDataFromTicketEdit(index) {
     let title = document.getElementById(`ticketTitleText${index}`).value;
     let category = document.getElementById(`ticketCategorySelect${index}`).value;
     let description = document.getElementById(`ticketDescription${index}`).value;
-    let arr = [title, category, description];
-    console.log(arr);
+    taskData[index]["title"] = title;
+    taskData[index]["category"] = category;
+    taskData[index]["description"] = description;
+    saveDataToServer();
+
 
 }
 

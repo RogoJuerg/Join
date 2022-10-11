@@ -114,6 +114,8 @@ html {
     width: 300px;
     white-space: nowrap;
     margin: 24px;
+    overflow: hidden; 
+    white-space: nowrap;
 }
 
 .ticket-details-expanded {

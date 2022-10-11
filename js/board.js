@@ -77,7 +77,6 @@ function showTickets() {
         mainContent.innerHTML += addHTML(task, id,);
         addIconsToBoard(task, id);
         document.getElementById('ticket' + id).classList.add(checkPriority(task));
-        
     }
 }
 
