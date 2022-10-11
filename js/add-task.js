@@ -80,20 +80,18 @@ function checkForm() {
     getData();
     let popupText = document.getElementById('popupText');
     let popupTitle = document.getElementById('popupTitle');
-    openPopup();
-    popupSuccess(popupText, popupTitle);
-   //for (let i = 0; i < taskData.length; i++) {
-   //    if (taskData[i].value == '') {
-   //        fail(i);
-   //        popupFailed(popupText, popupTitle);
-   //        check = 'failed';
-   //    } if (!taskData[i].value == '') {
-   //        success(i);
-   //        openPopup();
-   //        popupSuccess(popupText, popupTitle);
-   //        check = 'success';
-   //    }
-   //}
+   for (let i = 0; i < taskData.length; i++) {
+       if (taskData[i].value == '') {
+           fail(i);
+           popupFailed(popupText, popupTitle);
+           check = 'failed';
+       } if (!taskData[i].value == '') {
+           success(i);
+           openPopup();
+           popupSuccess(popupText, popupTitle);
+           check = 'success';
+       }
+   }
     saveData(taskData);
 }
 
