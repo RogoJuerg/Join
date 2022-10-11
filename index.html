@@ -28,16 +28,19 @@
             <form>
               <div class="login-section-email">
                 <span>E-Mail</span>
-                <input class="input-neutral" id="email" type="text">
+                <input required class="input-neutral" id="email" type="email">
               </div>
               <div class="login-section-password">
                 <span>Password</span>
-                <input class="input-neutral" id="password" type="password">
+                <input required class="input-neutral" id="password" type="password">
               </div>
               <div class="login-buttons">
-                <button  id="logInButton" type="button" onclick="checkForm()">Log-In</button>
+                <button  id="logInButton" onsubmit="checkForm()">Log-In</button>
                 <button type="button" onclick="openSignUpPopup()">Sign-Up</button>
               </div>
+              <div class="guest-login">
+                <a href="board.html">Log-In as guest</a>
+            </div>
             </form>
           </div>
         </div>
@@ -54,7 +57,7 @@
           <form>
             <div class="sign-up-form-cont">
               <span>First Name</span>
-              <input id="signUpFirstName" class="input-neutral" type="text">
+              <input required id="signUpFirstName" class="input-neutral" type="text">
             </div>
             <div class="sign-up-form-cont">
               <span>Last Name</span>
