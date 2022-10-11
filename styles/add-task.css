@@ -202,6 +202,14 @@
     height: 84px;
 }
 
+#linkToBacklog {
+    text-decoration: none;
+}
+
+#linkToBacklog:hover {
+    text-decoration: underline;
+}
+
 @keyframes imgPulse {
     20% {
         border: 1px solid blue;

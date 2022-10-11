@@ -80,18 +80,20 @@ function checkForm() {
     getData();
     let popupText = document.getElementById('popupText');
     let popupTitle = document.getElementById('popupTitle');
-    for (let i = 0; i < taskData.length; i++) {
-        if (taskData[i].value == '') {
-            fail(i);
-            popupFailed(popupText, popupTitle);
-            check = 'failed';
-        } if (!taskData[i].value == '') {
-            success(i);
-            openPopup();
-            popupSuccess(popupText, popupTitle);
-            check = 'success';
-        }
-    }
+    openPopup();
+    popupSuccess(popupText, popupTitle);
+   //for (let i = 0; i < taskData.length; i++) {
+   //    if (taskData[i].value == '') {
+   //        fail(i);
+   //        popupFailed(popupText, popupTitle);
+   //        check = 'failed';
+   //    } if (!taskData[i].value == '') {
+   //        success(i);
+   //        openPopup();
+   //        popupSuccess(popupText, popupTitle);
+   //        check = 'success';
+   //    }
+   //}
     saveData(taskData);
 }
 
@@ -122,7 +124,7 @@ function popupSuccess(popupText, popupTitle) {
     popupTitle.innerHTML = `Success!`;
     popupTitle.classList.add('green-text');
     popupTitle.classList.remove('red-text');
-    popupText.innerHTML = `Task successfully added to backlog!`;
+    popupText.innerHTML = `Task successfully added to <a id="linkToBacklog" href="backlog.html">backlog</a>!`;
     return;
 }
 
@@ -211,3 +213,4 @@ function generateAssignedUser() {
 function clearAssignedUser() {
     document.getElementById('assignedUserContainer').innerHTML = '';
 }
+

@@ -34,15 +34,15 @@
             </div>
             <div class="task-container">
                 <div class="task-container-content">
-                    <form>
+                    <form onsubmit="checkForm()">
                         <div class="form-left">
                             <div class="task-title">
                                 <label class="title-label">TITLE</label>
-                                <input type="text" id="title" required>
+                                <input required type="text" id="title" required>
                             </div>
                             <div class="form-category">
                                 <label class="title-label">CATEGORY</label>
-                                <select name="Tasks" id="tasks" required>
+                                <select required name="Tasks" id="tasks" required>
                                     <option value="">-- Select task --</option>
                                     <option value="management">Management</option>
                                     <option value="programming">Programming</option>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="form-description">
                                 <label class="title-label">DESCRIPTION</label>
-                                <textarea type="text" id="description" rows="6" required></textarea>
+                                <textarea required type="text" id="description" rows="6" required></textarea>
                             </div>
                         </div>
                         <div class="form-right">
@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="assigned-to-buttons">
                                     <button type="button" onclick="reloadPage()" class="btn-1">CANCEL</button>
-                                    <button type="button" onclick="checkForm()" class="btn-2">CREATE TASK</button>
+                                    <button type="submit" class="btn-2">CREATE TASK</button>
                                 </div>
                             </div>
                         </div>
