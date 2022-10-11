@@ -244,6 +244,7 @@ function backToBacklog(id) {
     allTasks[id]["status"] = "backlog";
     saveData();
     showTickets();
+    showInResponsive();
     readyForOpenTask();
 }
 
@@ -356,6 +357,7 @@ else {
 
 
 function showInResponsive() {
+    allTasks = data;
     let currentCollumn = document.getElementById('responsiveHeadline');
     let currentValue = currentCollumn.value;
     console.log("the current collumn is " + currentValue)
