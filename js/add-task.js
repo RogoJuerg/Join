@@ -150,9 +150,11 @@ function openUserSelection() {
     if (openCheck == true) {
         closeUserSelection();
         openCheck = false;
+        document.getElementById('userSelectionBtn').classList.remove('rotate45')
     } else {
         document.getElementById('userSelectionContainer').classList.remove('d-none');
         openCheck = true;
+        document.getElementById('userSelectionBtn').classList.add('rotate45')
     }
 }
 

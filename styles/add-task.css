@@ -198,6 +198,7 @@
 
 .assigned-to-user-img {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     height: 84px;
 }
@@ -208,6 +209,10 @@
 
 #linkToBacklog:hover {
     text-decoration: underline;
+}
+
+.rotate45 {
+    transform: rotate(45deg);
 }
 
 @keyframes imgPulse {
@@ -391,11 +396,11 @@
     border: 1px solid lightgray;
     border-radius: 10px;
     animation: userSelectionOpen 550ms ease-in-out;
-    top: 42px;
+    top: 26px;
     left: 0;
     transform: translateX(64px);
-    height: 132px;
-    width: 74px;
+    height: 215px;
+    width: 115px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
