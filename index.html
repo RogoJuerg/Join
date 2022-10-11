@@ -25,7 +25,7 @@
             <h1>Log-In</h1>
           </div>
           <div class="login-section">
-            <form>
+            <form onsubmit="checkForm(); return false">
               <div class="login-section-email">
                 <span>E-Mail</span>
                 <input required class="input-neutral" id="email" type="email">
@@ -35,7 +35,7 @@
                 <input required class="input-neutral" id="password" type="password">
               </div>
               <div class="login-buttons">
-                <button  id="logInButton" onsubmit="checkForm()">Log-In</button>
+                <button  id="logInButton" type="submit" >Log-In</button>
                 <button type="button" onclick="openSignUpPopup()">Sign-Up</button>
               </div>
               <div class="guest-login">
@@ -54,22 +54,22 @@
           <h1>Sign-Up</h1>
         </div>
         <div class="sign-up-form">
-          <form>
+          <form onsubmit="checkFormSignUp(); return false">
             <div class="sign-up-form-cont">
               <span>First Name</span>
               <input required id="signUpFirstName" class="input-neutral" type="text">
             </div>
             <div class="sign-up-form-cont">
               <span>Last Name</span>
-              <input id="signUpLastName" class="input-neutral" type="text">
+              <input required id="signUpLastName" class="input-neutral" type="text">
             </div>
             <div class="sign-up-form-cont">
               <span>E-Mail</span>
-              <input id="signUpEmail" class="input-neutral" type="text">
+              <input required id="signUpEmail" class="input-neutral" type="email">
             </div>
             <div class="sign-up-form-cont">
               <span>Password</span>
-              <input id="signUpPassword" class="input-neutral" type="password">
+              <input required id="signUpPassword" class="input-neutral" type="password">
             </div>
 
             <div class="sign-up-form-cont">
@@ -89,7 +89,7 @@
 
 
             <div class="sign-up-buttons">
-              <button type="button" onclick="checkFormSignUp()">Sign-up</button>
+              <button type="submit" >Sign-up</button>
               <button type="button" onclick="openSignUpPopup(), resetSignUpFields()">Cancel</button>
             </div>
           </form>

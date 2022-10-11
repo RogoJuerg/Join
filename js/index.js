@@ -32,7 +32,6 @@ function checkForm() {
     let password = document.getElementById('password');
     
         checkForAvailableUser(email.value, password.value)
-   
 }
 
 
@@ -77,40 +76,6 @@ async function checkFormSignUp() {
         await backend.setItem('users', JSON.stringify(users));
         openSignUpPopup()
         userCreatedPopUp()
-    }
-
-
-    if (!firstName.value) {
-        firstName.classList.remove('input-green');
-        firstName.classList.add('input-red');
-        firstName.placeholder = "enter your name!"
-    } else {
-        firstName.classList.remove('input-red');
-        firstName.classList.add('input-green');
-    }
-    if (!lastName.value) {
-        lastName.classList.remove('input-green');
-        lastName.classList.add('input-red');
-        lastName.placeholder = "enter your name!"
-    } else {
-        lastName.classList.remove('input-red');
-        lastName.classList.add('input-green');
-    }
-    if (!email.value) {
-        email.classList.remove('input-green');
-        email.classList.add('input-red');
-        email.placeholder = "enter an E-Mail!"
-    } else {
-        email.classList.remove('input-red');
-        email.classList.add('input-green');
-    }
-    if (!password.value) {
-        password.classList.remove('input-green');
-        password.classList.add('input-red');
-        password.placeholder = "choose your password!"
-    } else {
-        password.classList.remove('input-red');
-        password.classList.add('input-green');
     }
 }
 
