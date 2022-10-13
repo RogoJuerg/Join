@@ -9,6 +9,7 @@ async function initAddTask() {
     await init();
     await loadUsers();
     generateUserSelection();
+    getActuallyDate();
 }
 
 
@@ -212,5 +213,13 @@ function generateAssignedUser() {
 
 function clearAssignedUser() {
     document.getElementById('assignedUserContainer').innerHTML = '';
+}
+
+function getActuallyDate() {
+    n = new Date();
+    y = n.getFullYear();
+    m = n.getMonth() + 1;
+    d = n.getDate();
+    document.getElementById("dueTo").value = y + "-" + m + "-" + d;
 }
 
