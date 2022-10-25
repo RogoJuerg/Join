@@ -42,7 +42,7 @@ main {
     display: flex;
     width: 100vw;
     height: 100vh;
-    background-color: #1E3190!important;
+    background-color: #F4F3FB;
 }
 
 .main-container {
@@ -200,7 +200,7 @@ main {
 }
 
 .sign-up-buttons button{
-    margin: 16px 16px 0 16px;
+    margin: 16px 16px 16px 16px;
     padding: 8px 16px 8px 16px;
     background-color: #1E3190;
     color: white;
@@ -208,6 +208,20 @@ main {
     border-radius: 10px;
     border: 2px solid white;
     transition: all 125ms ease-in-out;
+}
+
+.guest-login {
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+}
+
+.guest-login a {
+    text-decoration: none;
+}
+
+.guest-login a:hover {
+    text-decoration: underline;
 }
 
 .sign-up-buttons button:hover {

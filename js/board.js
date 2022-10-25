@@ -113,10 +113,11 @@ function addHTML(currentArray, id) {
                 
                     <div>
                     <img src="src/img/back-to-backlog.png" title="put it back to Backlog" class="put-to-backlog" onclick="backToBacklog(${id})"></img>
-                    <div class="arrows">
-                    <img src="src/img/arrow-icon-left.png" onclick="moveTicketLeft(${id})">
                     <img class="click-delete-icon" src="src/img/delete.png" onclick="deleteByClick(${id})">
-                    <img src="src/img/arrow-icon-right.png" onclick="moveTicketRight(${id})">
+                    <div class="arrows">
+                    
+                    
+                    
                 </div>
                 <div id="iconArea${id}" class="iconAreaBoard">
                 </div>
@@ -154,6 +155,7 @@ function checkAssignedTo(currentArray, id) {
  */
 function startDragging(id) {
     currentDraggedElement = id;
+    
 }
 
 
@@ -169,6 +171,7 @@ function allowDrop(ev) {
  */
 function moveTo(status) {
     allTasks[currentDraggedElement]['status'] = status;
+    document.getElementById('bin').classList.add("d-none")
     saveData();
     showTickets();
     readyForOpenTask();

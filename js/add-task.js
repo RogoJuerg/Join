@@ -9,6 +9,7 @@ async function initAddTask() {
     await init();
     await loadUsers();
     generateUserSelection();
+    getActuallyDate();
 }
 
 
@@ -80,18 +81,18 @@ function checkForm() {
     getData();
     let popupText = document.getElementById('popupText');
     let popupTitle = document.getElementById('popupTitle');
-    for (let i = 0; i < taskData.length; i++) {
-        if (taskData[i].value == '') {
-            fail(i);
-            popupFailed(popupText, popupTitle);
-            check = 'failed';
-        } if (!taskData[i].value == '') {
-            success(i);
-            openPopup();
-            popupSuccess(popupText, popupTitle);
-            check = 'success';
-        }
-    }
+   for (let i = 0; i < taskData.length; i++) {
+       if (taskData[i].value == '') {
+           fail(i);
+           popupFailed(popupText, popupTitle);
+           check = 'failed';
+       } if (!taskData[i].value == '') {
+           success(i);
+           openPopup();
+           popupSuccess(popupText, popupTitle);
+           check = 'success';
+       }
+   }
     saveData(taskData);
 }
 
@@ -122,7 +123,7 @@ function popupSuccess(popupText, popupTitle) {
     popupTitle.innerHTML = `Success!`;
     popupTitle.classList.add('green-text');
     popupTitle.classList.remove('red-text');
-    popupText.innerHTML = `Task successfully added to backlog!`;
+    popupText.innerHTML = `Task successfully added to <a id="linkToBacklog" href="backlog.html">backlog</a>!`;
     return;
 }
 
@@ -150,9 +151,11 @@ function openUserSelection() {
     if (openCheck == true) {
         closeUserSelection();
         openCheck = false;
+        document.getElementById('userSelectionBtn').classList.remove('rotate45')
     } else {
         document.getElementById('userSelectionContainer').classList.remove('d-none');
         openCheck = true;
+        document.getElementById('userSelectionBtn').classList.add('rotate45')
     }
 }
 
@@ -211,3 +214,12 @@ function generateAssignedUser() {
 function clearAssignedUser() {
     document.getElementById('assignedUserContainer').innerHTML = '';
 }
+
+function getActuallyDate() {
+    n = new Date();
+    y = n.getFullYear();
+    m = n.getMonth() + 1;
+    d = n.getDate();
+    document.getElementById("dueTo").value = y + "-" + m + "-" + d;
+}
+
