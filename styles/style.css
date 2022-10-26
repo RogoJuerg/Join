@@ -149,13 +149,21 @@ nav * {
     -ms-user-select: none;
 }
 
+.impressum-container {
+    margin: 30px 48px 48px 160px;
+}
+
 .impressum {
     text-align: center;
     margin-top: 30px;
+
+}
+
+.impressum a {
     color: #b1b4c8;
 }
 
-.impressum:hover {
+.impressum a:hover {
     color: white;
     cursor: pointer;
 }
@@ -364,6 +372,10 @@ nav * {
         border-left: none;
         border-bottom: 5px solid white;
         padding: 0 !important;
+    }
+
+    .impressum-container {
+        margin: 70px 32px;
     }
 
 }
