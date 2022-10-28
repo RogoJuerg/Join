@@ -137,39 +137,29 @@ li {
 
     li {
         margin-left: -32px;
+        width: 80%;
     }
 
-    .img1-big {
+    #menubar-responsive {
+        width: 83%;
+    }
+
+    /*.img1-big {
         width: 70%;
     }
 
     .img2-big {
         width: 85%;
+    }*/
+
+    img {
+        margin-left: -31px;
+    }
+
+    #imgBig {
+        margin-left: -25px;
     }
 
 }
 
-@media (max-width:400px) {
-
-    .img1-big {
-        width: 80%;
-    }
-
-    .img2-big {
-        width: 95%;
-    }
-
-}
-
-@media (max-width:350px) {
-
-    .img1-big {
-        width: 95%;
-    }
-
-    .img2-big {
-        width: 100%;
-    }
-
-
-}
+@media (max-width:400px) {}
