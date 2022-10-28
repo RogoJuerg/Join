@@ -30,10 +30,14 @@ function closeTicket(index) {
 }
 
 function expandTicketDetails(index) {
-  let ticketDetails = document.getElementById(`ticketDetails${index}`);
   let ticketTitle = document.getElementById(`ticketTitle${index}`);
+  let ticketCategory = document.getElementById(`ticketCategory${index}`);
+  let ticketDetails = document.getElementById(`ticketDetails${index}`);
+
   ticketTitle.classList.toggle("ticket-details");
   ticketTitle.classList.toggle("ticket-details-expanded");
+  ticketCategory.classList.toggle("ticket-details");
+  ticketCategory.classList.toggle("ticket-details-expanded");
   ticketDetails.classList.toggle("ticket-details");
   ticketDetails.classList.toggle("ticket-details-expanded");
   ticketDetails.style.zIndex = 11;
@@ -87,7 +91,7 @@ function taskHtml(i) {
         <div id="ticketTitle${i}"  class="ticket-details ticket-title">
             <span>${taskData[i].title}</span>
         </div>
-        <div id="ticketCategory${i}" class="ticket-category">
+        <div id="ticketCategory${i}" class="ticket-category ticket-details">
             <span>${taskData[i].category}</span>
         </div>
         <div id="ticketDetails${i}" class="ticket-details">
@@ -119,7 +123,7 @@ function taskHtml(i) {
                     </div>
                     
                 </div>
-                <div>
+                <div class="responsive-explanation">
                     <span id="textOptions${i}">choose an option or doubleclick to close expansion</span>
                     
                 </div>
@@ -365,3 +369,74 @@ function sortTicketsInBacklog() {
     }
   }
 }
+
+/*function editTask() {
+   return `
+ 
+ 
+   <div class="content-container">
+            <div class="content-container-title">
+                <h1>Add Task</h1>
+                <span>Learning Management System Project</span>
+            </div>
+            <div class="task-container">
+                <div class="task-container-content">
+                    <form onsubmit="checkForm(); return false">
+                        <div class="form-left">
+                            <div class="task-title">
+                                <label class="title-label">TITLE</label>
+                                <input required type="text" id="title" required>
+                            </div>
+                            <div class="form-category">
+                                <label class="title-label">CATEGORY</label>
+                                <select required name="Tasks" id="tasks" required>
+                                    <option value="">-- Select task --</option>
+                                    <option value="management">Management</option>
+                                    <option value="programming">Programming</option>
+                                    <option value="design">Design</option>
+                                </select>
+                            </div>
+                            <div class="form-description">
+                                <label class="title-label">DESCRIPTION</label>
+                                <textarea required type="text" id="description" rows="6" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-right">
+                            <div class="form-due-date">
+                                <label class="title-label">DUE DATE</label>
+                                <input type="date" id="dueTo" required>
+                            </div>
+                            <div class="form-urgency">
+                                <label class="title-label">URGENCY</label>
+                                <select name="Tasks" id="urgency" required>
+                                    <option value="low">Low</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                            </div>
+                            <div class="form-assigned-to">
+                                <label class="title-label">ASSIGNED TO</label>
+                                <div class="content-assigned-to">
+                                    </div>
+                                    <div class="assigned-to-user-img">
+                                        <img id="userSelectionBtn" onclick="openUserSelection()" class="assigned-to-user-img-add-user" src="./src/img/icon plus.png">
+                                        <div>
+                                            <div id="assignedUserContainer" class="assigned-user-container"></div>
+                                        </div>
+                                        <div id="userSelectionContainer" class="user-selection-container d-none">
+                                            <div id="userSelection" class="user-selection-content">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="assigned-to-buttons">
+                                    <button type="button" onclick="reloadPage()" class="btn-1">CANCEL</button>
+                                    <button type="submit" class="btn-2">CREATE TASK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>   `;
+}*/

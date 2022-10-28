@@ -489,20 +489,82 @@ html {
 }
 
 @media only screen and (max-width: 700px) {
-    #ticketDetails1 {
-        margin-top: 120px;
-        margin-right: 200px;
-    }
 
     .tasks-content {
-        gap: 50px;
+        margin-left: 30px;
     }
 
+    .ticket-details {
+        margin-bottom: 5px;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .ticket-user-img {
+        margin: 0px;
+    }
+
+    .ticket-title {
+        display: block;
+    }
+
+    .ticket-category {
+        display: block;
+        text-align: center;
+    }
+
+
+    .ticket-details-expanded {
+        margin-top: -50px;
+        height: 80px;
+        text-align: center;
+    }
+
+
     .ticket-options-container {
-        margin-top: 200px;
+        margin-top: 400px;
     }
 
     .ticketExpanded2 {
         display: none;
+    }
+
+    .task-ticket {
+        flex-direction: column;
+        height: 200px;
+
+    }
+
+    .ticket-title-input input {
+        width: 85%;
+    }
+
+    .task-ticket-container {
+        height: 50%;
+        margin-top: 50px;
+    }
+
+    .ticket-options {
+        flex-direction: column;
+        position: absolute;
+        left: 0;
+        top: -52px;
+    }
+
+    .responsive-explanation {
+        font-size: 12px;
+        position: absolute;
+        left: 5px;
+        top: 157px;
+    }
+
+    .ticket-textarea {
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .ticket-details-expanded {
+        width: 200px;
     }
 }
