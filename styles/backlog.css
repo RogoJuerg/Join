@@ -41,7 +41,7 @@ html {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 100%;
+    width: 95%;
 }
 
 .task-ticket-container {
@@ -114,7 +114,7 @@ html {
     width: 300px;
     white-space: nowrap;
     margin: 24px;
-    overflow: hidden; 
+    overflow: hidden;
     white-space: nowrap;
 }
 
@@ -161,6 +161,7 @@ html {
         height: 124px;
     }
 }
+
 #closeTicketButton:hover {
     background-color: #1E3190;
     transition: all 125ms ease-in-out;
@@ -442,7 +443,7 @@ html {
     width: 30%;
 }
 
-.form-category select{
+.form-category select {
     width: 100%;
     height: 40px;
     font-size: 1em;
@@ -472,4 +473,36 @@ html {
     transition: all 125ms ease-in-out;
     color: #e1e1e1;
     transition: all 125ms ease-in-out;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .tasks-content {
+        width: 90%;
+    }
+
+    .tasks-container {
+        margin-left: -50px;
+    }
+
+
+}
+
+@media only screen and (max-width: 700px) {
+    #ticketDetails1 {
+        margin-top: 120px;
+        margin-right: 200px;
+    }
+
+    .tasks-content {
+        gap: 50px;
+    }
+
+    .ticket-options-container {
+        margin-top: 200px;
+    }
+
+    .ticketExpanded2 {
+        display: none;
+    }
 }

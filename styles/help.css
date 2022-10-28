@@ -1,7 +1,7 @@
 li {
-   /* display: flex;*/
+    /* display: flex;*/
     align-items: center;
-   /* counter-increment: item;*/
+    /* counter-increment: item;*/
     margin-bottom: 5px;
     margin-top: 20px;
     font-size: 18px;
@@ -54,6 +54,7 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .img1-big {
@@ -79,6 +80,7 @@ li {
     .img1-big {
         width: 30%;
     }
+
     .img2-big {
         width: 40%;
     }
@@ -101,6 +103,7 @@ li {
     .img1-big {
         width: 40%;
     }
+
     .img2-big {
         width: 55%;
     }
@@ -111,6 +114,7 @@ li {
     .img1-big {
         width: 50%;
     }
+
     .img2-big {
         width: 65%;
     }
@@ -121,6 +125,7 @@ li {
     .img1-big {
         width: 60%;
     }
+
     .img2-big {
         width: 75%;
     }
@@ -137,6 +142,7 @@ li {
     .img1-big {
         width: 70%;
     }
+
     .img2-big {
         width: 85%;
     }
@@ -148,6 +154,7 @@ li {
     .img1-big {
         width: 80%;
     }
+
     .img2-big {
         width: 95%;
     }
@@ -159,6 +166,7 @@ li {
     .img1-big {
         width: 95%;
     }
+
     .img2-big {
         width: 100%;
     }

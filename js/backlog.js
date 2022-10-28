@@ -1,90 +1,79 @@
 let availableUsers = [];
 let taskData = [];
 
-
 async function initBacklog() {
-    await init();
-    setData();
-    generateTask();
+  await init();
+  setData();
+  generateTask();
 }
-
 
 function setData() {
-    availableUsers = users;
-    taskData = data;
+  availableUsers = users;
+  taskData = data;
 }
-
 
 function openTicket(index) {
-    let allTasks = data;
-    let task = allTasks[index]
-    let ticketExpanded = document.getElementById(`ticketExpanded${index}`);
-    document.getElementById(`ticketButton${index}`).classList.add('d-none');
-    ticketExpanded.classList.remove('d-none');
-    ticketExpanded.classList.add(checkPriority(task));
-    expandTicketDetails(index);
+  let allTasks = data;
+  let task = allTasks[index];
+  let ticketExpanded = document.getElementById(`ticketExpanded${index}`);
+  document.getElementById(`ticketButton${index}`).classList.add("d-none");
+  ticketExpanded.classList.remove("d-none");
+  ticketExpanded.classList.add(checkPriority(task));
+  expandTicketDetails(index);
 }
-
 
 function closeTicket(index) {
-    document.getElementById(`ticketExpanded${index}`).classList.add('d-none');
-    document.getElementById(`ticketButton${index}`).classList.remove('d-none');
-    closeTicketDetails(index);
-    closeEditMode(index);
+  document.getElementById(`ticketExpanded${index}`).classList.add("d-none");
+  document.getElementById(`ticketButton${index}`).classList.remove("d-none");
+  closeTicketDetails(index);
+  closeEditMode(index);
 }
-
 
 function expandTicketDetails(index) {
-    let ticketDetails = document.getElementById(`ticketDetails${index}`);
-    let ticketTitle = document.getElementById(`ticketTitle${index}`);
-    ticketTitle.classList.toggle('ticket-details');
-    ticketTitle.classList.toggle('ticket-details-expanded');
-    ticketDetails.classList.toggle('ticket-details');
-    ticketDetails.classList.toggle('ticket-details-expanded');
-    ticketDetails.style.zIndex = 11;
-    document.getElementById(`ticketExpanded${index}`).style.zIndex = 10;
+  let ticketDetails = document.getElementById(`ticketDetails${index}`);
+  let ticketTitle = document.getElementById(`ticketTitle${index}`);
+  ticketTitle.classList.toggle("ticket-details");
+  ticketTitle.classList.toggle("ticket-details-expanded");
+  ticketDetails.classList.toggle("ticket-details");
+  ticketDetails.classList.toggle("ticket-details-expanded");
+  ticketDetails.style.zIndex = 11;
+  document.getElementById(`ticketExpanded${index}`).style.zIndex = 10;
 }
-
 
 function closeTicketDetails(index) {
-    let ticketDetails = document.getElementById(`ticketDetails${index}`);
-    let ticketTitle = document.getElementById(`ticketTitle${index}`);
-    ticketDetails.classList.add('ticket-details');
-    ticketDetails.classList.remove('ticket-details-expanded');
-    ticketTitle.classList.add('ticket-details');
-    ticketTitle.classList.remove('ticket-details-expanded');
-    ticketDetails.style.zIndex = 9;
-    document.getElementById(`ticketExpanded${index}`).style.zIndex = 8;
+  let ticketDetails = document.getElementById(`ticketDetails${index}`);
+  let ticketTitle = document.getElementById(`ticketTitle${index}`);
+  ticketDetails.classList.add("ticket-details");
+  ticketDetails.classList.remove("ticket-details-expanded");
+  ticketTitle.classList.add("ticket-details");
+  ticketTitle.classList.remove("ticket-details-expanded");
+  ticketDetails.style.zIndex = 9;
+  document.getElementById(`ticketExpanded${index}`).style.zIndex = 8;
 }
-
 
 function textShow(content, index) {
-    document.getElementById(`textOptions${index}`).innerHTML = content;
-    document.getElementById(`textOptions${index}`).classList.toggle('text-anim');
+  document.getElementById(`textOptions${index}`).innerHTML = content;
+  document.getElementById(`textOptions${index}`).classList.toggle("text-anim");
 }
-
 
 function generateTask() {
-    document.getElementById('taskContent').innerHTML = ``;
-    for (let i = 0; i < taskData.length; i++) {
-        let task = taskData[i]
-        if (taskData[i].status == "backlog") {
-            document.getElementById('taskContent').innerHTML += taskHtml(i);
-            document.getElementById('ticketButton' + i).classList.add(checkPriority(task));
-            renderAssignedUser(i);
-            addIconsToBacklog(task, i);
-            //renderUserSelection(i);
-        }
+  document.getElementById("taskContent").innerHTML = ``;
+  for (let i = 0; i < taskData.length; i++) {
+    let task = taskData[i];
+    if (taskData[i].status == "backlog") {
+      document.getElementById("taskContent").innerHTML += taskHtml(i);
+      document
+        .getElementById("ticketButton" + i)
+        .classList.add(checkPriority(task));
+      renderAssignedUser(i);
+      addIconsToBacklog(task, i);
+      //renderUserSelection(i);
     }
+  }
 }
 
-
-
-
-
-
 function taskHtml(i) {
-    return /*html*/ `
+  return /*html*/ `
     <div ondblclick="closeTicket(${i})" class="task-ticket-container undraggable">
     <div class="task-ticket" id="taskTicket">
         <div onclick="closeEveryTicketExceptLast(${i})" id="ticketButton${i}" class="ticket-button">
@@ -144,7 +133,6 @@ function taskHtml(i) {
     `;
 }
 
-
 //function renderUserSelection(index) {
 //    document.getElementById(`userSelection${index}`).innerHTML = ``;
 //    for (let i = 0; i < availableUsers.length; i++) {
@@ -158,145 +146,150 @@ function taskHtml(i) {
 //    }
 //}
 
-
 function renderAssignedUser(index) {
-    let zIndex = taskData[index].assignedTo.length;
-    let left = 0;
-    document.getElementById(`assignedUser${index}`).innerHTML = ``;
-    if (taskData[index].assignedTo) {
-        for (let i = 0; i < taskData[index].assignedTo.length; i++) {
-            if (taskData[index].assignedTo) {
-                document.getElementById(`assignedUser${index}`).innerHTML += /*html*/ `
+  let zIndex = taskData[index].assignedTo.length;
+  let left = 0;
+  document.getElementById(`assignedUser${index}`).innerHTML = ``;
+  if (taskData[index].assignedTo) {
+    for (let i = 0; i < taskData[index].assignedTo.length; i++) {
+      if (taskData[index].assignedTo) {
+        document.getElementById(`assignedUser${index}`).innerHTML += /*html*/ `
                     <!--<img style="left: ${left}px; z-index: ${zIndex};" src="${taskData[index].assignedTo[i].img}">-->
                     <div id="iconArea${index}" class="iconAreaBacklog new-scrollbar">
                     </div>
             `;
-                zIndex--;
-                left += 32;
-            }
-        }
+        zIndex--;
+        left += 32;
+      }
     }
+  }
 }
-
-
 
 function addIconsToBacklog(task, id) {
-    let target = document.getElementById('iconArea' + id);
-    let allUsers = task['assignedTo'];
-    for (let i = 0; i < allUsers.length; i++) {
-        let thatUser = allUsers[i];
-        target.innerHTML += createUserIcon(thatUser);
-    }
-        
-    }
-
+  let target = document.getElementById("iconArea" + id);
+  let allUsers = task["assignedTo"];
+  for (let i = 0; i < allUsers.length; i++) {
+    let thatUser = allUsers[i];
+    target.innerHTML += createUserIcon(thatUser);
+  }
+}
 
 function showAssignedUserInSelection(index) {
-    checkIfUserIsAssigned(index);
-
+  checkIfUserIsAssigned(index);
 }
 
-// 
+//
 function checkIfUserIsAssigned(index) {
-    for (let i = 0; i < taskData[index].assignedTo.length; i++) {
-        
-    }
+  for (let i = 0; i < taskData[index].assignedTo.length; i++) {}
 }
-
 
 function moveTaskToBoard(index) {
-    taskData[index].status = 'todo';
-    saveDataToServer();
-    generateTask();
+  taskData[index].status = "todo";
+  saveDataToServer();
+  generateTask();
 }
-
 
 async function saveDataToServer() {
-    await backend.setItem('tickets', JSON.stringify(taskData));
+  await backend.setItem("tickets", JSON.stringify(taskData));
 }
-
 
 function deleteTask(index) {
-    taskData.splice(index, 1);
-    resetIdInData();
-    generateTask();
-    saveDataToServer();
+  taskData.splice(index, 1);
+  resetIdInData();
+  generateTask();
+  saveDataToServer();
 }
-
 
 function replaceTagDescription(index) {
-    document.getElementById(`ticketDetails${index}`).innerHTML = `<textarea id="ticketDescription${index}">${taskData[index].description}</textarea>`;
-    document.getElementById(`ticketDescription${index}`).classList.add('ticket-textarea');
+  document.getElementById(
+    `ticketDetails${index}`
+  ).innerHTML = `<textarea id="ticketDescription${index}">${taskData[index].description}</textarea>`;
+  document
+    .getElementById(`ticketDescription${index}`)
+    .classList.add("ticket-textarea");
 }
-
 
 function replaceTagCategory(index) {
-    document.getElementById(`ticketCategory${index}`).innerHTML =
-        `<select id="ticketCategorySelect${index}" name="ticketCategory${index}>
+  document.getElementById(
+    `ticketCategory${index}`
+  ).innerHTML = `<select id="ticketCategorySelect${index}" name="ticketCategory${index}>
             ${rendertaskCategoryOption()}
         </select>`;
-    document.getElementById(`ticketCategory${index}`).classList.add('form-category');
+  document
+    .getElementById(`ticketCategory${index}`)
+    .classList.add("form-category");
 }
-
 
 function replaceTagTitle(index) {
-    document.getElementById(`ticketTitle${index}`).innerHTML = `<input id="ticketTitleText${index}">`;
-    document.getElementById(`ticketTitleText${index}`).value = `${taskData[index].title}`;
-    document.getElementById(`ticketTitle${index}`).classList.add('ticket-title-input');
+  document.getElementById(
+    `ticketTitle${index}`
+  ).innerHTML = `<input id="ticketTitleText${index}">`;
+  document.getElementById(
+    `ticketTitleText${index}`
+  ).value = `${taskData[index].title}`;
+  document
+    .getElementById(`ticketTitle${index}`)
+    .classList.add("ticket-title-input");
 }
-
 
 function revertTagDescription(index) {
-    document.getElementById(`ticketDetails${index}`).innerHTML = `<span id="ticketDescription${index}">${taskData[index].description}</span>`;
-    document.getElementById(`ticketDescription${index}`).classList.remove('ticket-textarea');
+  document.getElementById(
+    `ticketDetails${index}`
+  ).innerHTML = `<span id="ticketDescription${index}">${taskData[index].description}</span>`;
+  document
+    .getElementById(`ticketDescription${index}`)
+    .classList.remove("ticket-textarea");
 }
-
 
 function revertTagTitle(index) {
-    document.getElementById(`ticketTitle${index}`).innerHTML = `<span>${taskData[index].title}</span>`;
-    document.getElementById(`ticketTitle${index}`).classList.remove('ticket-title-input');
+  document.getElementById(
+    `ticketTitle${index}`
+  ).innerHTML = `<span>${taskData[index].title}</span>`;
+  document
+    .getElementById(`ticketTitle${index}`)
+    .classList.remove("ticket-title-input");
 }
-
 
 function revertTagCategory(index) {
-    document.getElementById(`ticketCategory${index}`).innerHTML = `<span>${taskData[index].category}</span>`;
-    document.getElementById(`ticketCategory${index}`).classList.remove('form-category');
+  document.getElementById(
+    `ticketCategory${index}`
+  ).innerHTML = `<span>${taskData[index].category}</span>`;
+  document
+    .getElementById(`ticketCategory${index}`)
+    .classList.remove("form-category");
 }
 
-
 function openEditMode(index) {
-    //addUserSelection(index);
-    replaceTagDescription(index);
-    replaceTagTitle(index);
-    replaceTagCategory(index);
-    changeEditIconToSave(index);
+  //addUserSelection(index);
+  replaceTagDescription(index);
+  replaceTagTitle(index);
+  replaceTagCategory(index);
+  changeEditIconToSave(index);
 }
 
 function addUserSelection(index) {
-    let userIcons = document.getElementById('assignedUser' + index);
-    let userSelection = document.getElementById('userSelection' + index)
-    userIcons.classList.add("d-none");
-    userSelection.classList.remove("d-none");
-    userSelection.innerHTML = Selection(index);
-    addAvailableUsersInSelection(index);
+  let userIcons = document.getElementById("assignedUser" + index);
+  let userSelection = document.getElementById("userSelection" + index);
+  userIcons.classList.add("d-none");
+  userSelection.classList.remove("d-none");
+  userSelection.innerHTML = Selection(index);
+  addAvailableUsersInSelection(index);
 }
 
 function addAvailableUsersInSelection(index) {
-    let target = document.getElementById('selection' + index);
-    for (let i = 0; i < users.length; i++) {
-        let availableUser = users[i];
-        let fullName = availableUser['first_name'] + availableUser['last_name']
-        target.innerHTML += `
+  let target = document.getElementById("selection" + index);
+  for (let i = 0; i < users.length; i++) {
+    let availableUser = users[i];
+    let fullName = availableUser["first_name"] + availableUser["last_name"];
+    target.innerHTML += `
         <option>${fullName}</option>
         
-        `
-        
-    }
-
+        `;
+  }
 }
 
 function Selection(index) {
-    return `
+  return `
     <select id="selection${index}" multiple>
     
     </select>
@@ -304,74 +297,71 @@ function Selection(index) {
 }
 
 function closeEditMode(index) {
-    revertTagDescription(index);
-    revertTagTitle(index);
-    revertTagCategory(index);
-    revertChangeEditIconToSave(index);
+  revertTagDescription(index);
+  revertTagTitle(index);
+  revertTagCategory(index);
+  revertChangeEditIconToSave(index);
 }
-
 
 function saveChangedTicket(index) {
-    getDataFromTicketEdit(index);
-    generateTask();
-
+  getDataFromTicketEdit(index);
+  generateTask();
 }
-
 
 function changeEditIconToSave(index) {
-    document.getElementById(`editIcon${index}`).src = "./src/img/save.png";
-    document.getElementById(`editIconDiv${index}`).setAttribute(`onmouseover`, `textShow('save changes', ${index})`);
-    document.getElementById(`editIconDiv${index}`).setAttribute(`onclick`, `saveChangedTicket(${index})`);
+  document.getElementById(`editIcon${index}`).src = "./src/img/save.png";
+  document
+    .getElementById(`editIconDiv${index}`)
+    .setAttribute(`onmouseover`, `textShow('save changes', ${index})`);
+  document
+    .getElementById(`editIconDiv${index}`)
+    .setAttribute(`onclick`, `saveChangedTicket(${index})`);
 }
-
 
 function revertChangeEditIconToSave(index) {
-    document.getElementById(`editIcon${index}`).src = "./src/img/edit.png";
-    document.getElementById(`editIconDiv${index}`).setAttribute(`onmouseover`, `textShow('edit task', ${index})`);
-    document.getElementById(`editIconDiv${index}`).setAttribute(`onclick`, `openEditMode(${index})`);
+  document.getElementById(`editIcon${index}`).src = "./src/img/edit.png";
+  document
+    .getElementById(`editIconDiv${index}`)
+    .setAttribute(`onmouseover`, `textShow('edit task', ${index})`);
+  document
+    .getElementById(`editIconDiv${index}`)
+    .setAttribute(`onclick`, `openEditMode(${index})`);
 }
-
 
 function rendertaskCategoryOption() {
-    let options;
-    for (let i = 0; i < taskCategories.name.length; i++) {
-        options += `
+  let options;
+  for (let i = 0; i < taskCategories.name.length; i++) {
+    options += `
             <option value"${taskCategories.value[i]}">${taskCategories.name[i]}</option>
         `;
-    }
-    return options;
+  }
+  return options;
 }
-
 
 function getDataFromTicketEdit(index) {
-    let title = document.getElementById(`ticketTitleText${index}`).value;
-    let category = document.getElementById(`ticketCategorySelect${index}`).value;
-    let description = document.getElementById(`ticketDescription${index}`).value;
-    taskData[index]["title"] = title;
-    taskData[index]["category"] = category;
-    taskData[index]["description"] = description;
-    saveDataToServer();
-
-
+  let title = document.getElementById(`ticketTitleText${index}`).value;
+  let category = document.getElementById(`ticketCategorySelect${index}`).value;
+  let description = document.getElementById(`ticketDescription${index}`).value;
+  taskData[index]["title"] = title;
+  taskData[index]["category"] = category;
+  taskData[index]["description"] = description;
+  saveDataToServer();
 }
-
 
 function closeEveryTicketExceptLast(index) {
-    sortTicketsInBacklog();
-    for (let i = 0; i < sorted.length; i++) {
-        closeTicket(sorted[i]);
-    }
-    openTicket(index);
+  sortTicketsInBacklog();
+  for (let i = 0; i < sorted.length; i++) {
+    closeTicket(sorted[i]);
+  }
+  openTicket(index);
 }
-
-
 
 let sorted = [];
 function sortTicketsInBacklog() {
-    sorted = [];
-    for (let i = 0; i < taskData.length; i++) {
-        if (taskData[i].status == 'backlog') {
-            sorted.push(taskData[i].id);
-        }
+  sorted = [];
+  for (let i = 0; i < taskData.length; i++) {
+    if (taskData[i].status == "backlog") {
+      sorted.push(taskData[i].id);
     }
+  }
 }
