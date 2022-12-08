@@ -185,7 +185,7 @@ async function saveData() {
  *
  * delete complete task by drag and drop
  */
-async function deleteTicket() {
+/*async function deleteTicket() {
   await data.splice(currentDraggedElement, 1);
   allTasks = data;
   saveData();
@@ -199,14 +199,13 @@ async function deleteTicket() {
  * delete complete task by click(only in responsive)
  * @param {string} id - ticket position in array
  */
-async function deleteByClick(id) {
-  await data.splice(id, 1);
-  saveData();
+function deleteByClick(id) {
+  data.splice(id, 1);
   console.log(data);
-  //showTickets();
   showInResponsive();
   readyForOpenTask();
   saveData();
+  showTickets();
 }
 
 /**
@@ -286,7 +285,7 @@ function getDate(todue, id) {
   let fixedDays = diffDays + 1;
 
   if (firstDate < secondDate) {
-    return fixedDays + "day's left";
+    return fixedDays + "days left";
   }
   if (firstDate == secondDate) {
     return "today";
@@ -309,11 +308,11 @@ function showInResponsive() {
  * @param {string} currentStatus - status for using the right tasks and div-IDs
  */
 function getTasksInResponsive(currentStatus) {
-  let allTasks = data.filter((t) => t["status"] == currentStatus);
+  let tasks = allTasks.filter((t) => t["status"] == currentStatus);
   responsiveContent = document.getElementById("responsiveMainContent");
   responsiveContent.innerHTML = "";
-  for (let i = 0; i < allTasks.length; i++) {
-    let task = allTasks[i];
+  for (let i = 0; i < tasks.length; i++) {
+    let task = tasks[i];
     let id = task["id"];
     responsiveContent.innerHTML += addHTMLrespomsive(task, id);
     let ticket = document.getElementById("resticket" + id);
