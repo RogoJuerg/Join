@@ -58,13 +58,13 @@ function generateUserSelection() {
 }
 
 
-function getData() {
+function getData() { //reading value from input fields
     let arr = ['title', 'tasks', 'description', 'urgency', 'dueTo'];
     for (let i = 0; i < arr.length; i++) {
         taskData[i] = document.getElementById(arr[i]);
         savedData.push(taskData[i].value)
     }
-    return;
+    //return;
 }
 
 
